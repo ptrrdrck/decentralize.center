@@ -6,10 +6,15 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primaryColor: white;
+  --secondaryColor: black;
+  --filterColor: grayscale(1);
+}
+
 html {
   font-family: 'Fira Code', monospace;
   font-size: 17px;
-  letter-spacing: 2px;
 }
 
 html, body {
@@ -20,24 +25,43 @@ html, body {
 }
 
 body {
-  background:#fff;
+  background:var(--primaryColor);
+  color: var(--secondaryColor);
   display: flex;
   flex-direction: column;
+  letter-spacing: 1.2px;
 }
 
 header, main, footer {
   display: flex;
   flex-direction: column;
-  height: 33.33%;
+  height: auto;
   align-content: center;
   justify-content: center;
   align-self: center;
+  text-align: center;
+}
+
+header {
+  flex-grow: 1;
+  justify-content: end;
+}
+
+h1 {
+  margin: 0 0 calc(20px + 1vh) 0;
+}
+
+header p {
+  text-align: center;
+  margin: 0 calc(20px + 1vh);
+}
+
+footer p {
+  margin: calc(20px + 1vh);
 }
 
 main {
-  height: auto;
   flex-grow: 1;
-  text-align: center;
 }
 
 a {
@@ -62,7 +86,52 @@ a:hover {
   }
 }
 
+@keyframes hoverPulse {
+  0%   {
+    -webkit-transform: rotate(0deg);
+  }
+  50%  {
+    -webkit-transform: rotate(12deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+@keyframes clickRotate {
+  0%   {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
 .fade-in {
   animation: 1s fadeIn;
   opacity: 1;
+}
+
+.emoji {
+  font-size: 2rem;
+  filter: var(--filterColor);
+}
+
+.emoji:hover {
+  cursor: pointer;
+  animation: hoverPulse .3s ease-in-out forwards;
+  -webkit-animation: hoverPulse .3s ease-in-out forwards;
+}
+
+.emoji:active {
+  animation: clickRotate .3s forwards;
+  -webkit-animation: clickRotate .3s forwards;
+}
+
+#intro {
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  padding: 20px 16px;
+  border-radius: 5px;
+  margin: calc(20px + 1vh);
 }
