@@ -43,7 +43,7 @@ header, main, footer {
 }
 
 header {
-  flex-grow: 1;
+  flex: 1 1 auto;
   justify-content: end;
 }
 
@@ -56,12 +56,16 @@ header p {
   margin: 0 calc(20px + 1vh);
 }
 
+footer {
+  flex: 1 1 0;
+}
+
 footer p {
   margin: calc(20px + 1vh);
 }
 
 main {
-  flex-grow: 1;
+  flex: 1 1 auto;
 }
 
 a {
