@@ -48,7 +48,7 @@ header {
 }
 
 h1 {
-  margin: 0 0 calc(20px + 1vh) 0;
+  margin: calc(20px + 1vh) 0;
 }
 
 header p {
@@ -57,7 +57,7 @@ header p {
 }
 
 footer {
-  flex: 1 1 0;
+  flex: 1 1 auto;
 }
 
 footer p {
