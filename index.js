@@ -1,3 +1,17 @@
+function renderEthPrice(data) {
+  const price = document.getElementById("ethprice");
+  price.innerHTML = data.ethusd;
+}
+
+fetch("https://api.etherscan.io/api?module=stats&action=ethprice&apikey=JM7KNW3YVXNSH1YY93PBQH3B7FIXI1HEE3")
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      renderEthPrice(data);
+    });
+
+
 const themes = {
   zero: {
     "--primaryColor": "rgba(255, 255, 255, 1)",
