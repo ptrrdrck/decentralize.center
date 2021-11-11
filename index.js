@@ -1,17 +1,23 @@
 const themes = {
-  zero: {
+  light: {
     "--primaryColor": "rgba(255, 255, 255, 1)",
     "--secondaryColor": "rgba(0, 0, 0, 1)",
     "--filterColor": "grayscale(1)"
   },
-  one: {
+  dark: {
     "--primaryColor": "rgba(0, 0, 0, 1)",
     "--secondaryColor": "rgba(255, 255, 255, 1)",
-    "--filterColor": "invert(1)"
+    "--filterColor": "grayscale(1) invert(1)"
   }
 };
 
 var themesIndex = 0;
+
+function change(theme) {
+  for (let prop in theme) {
+    document.querySelector(":root").style.setProperty(prop, theme[prop]);
+  }
+}
 
 document.getElementById("change").addEventListener("click", function () {
   themesIndex++;
@@ -20,9 +26,3 @@ document.getElementById("change").addEventListener("click", function () {
   var theme = themes[Object.keys(themes)[themesIndex]];
   change(theme);
 });
-
-function change(theme) {
-  for (let prop in theme) {
-    document.querySelector(":root").style.setProperty(prop, theme[prop]);
-  }
-}
