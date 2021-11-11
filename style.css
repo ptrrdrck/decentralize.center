@@ -132,7 +132,7 @@ a:hover {
   -webkit-animation: clickRotate .3s forwards;
 }
 
-#intro {
+.info {
   background-color: var(--secondaryColor);
   color: var(--primaryColor);
   padding: 20px 16px;
