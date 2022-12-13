@@ -16,8 +16,9 @@
       </header>
 
       <div class="rounds">
-        <p class="round-label">Round <span id="round-number">1</span>...</p>
-        <p class="round-label">You can use up to <span class="outline" id="round-weight">10</span> votes this round.</p>
+        <p class="round-name">Round <span id="round-number">1</span></p>
+        <p class="round-info">You can use up to <span id="round-weight">10</span> votes this round.</p>
+        <button class="button next-round" id="next-round">Next Round</button>
       </div>
 
       <div class="confirm">
@@ -33,38 +34,36 @@
 
       <div class="voting-area">
         <div class="option-area">
-          <div class="value-options">
+          <div class="options">
             <div class="card option-card">
-              <div class="card-title">
-                <p class="card-label">Option A</p>
-              </div>
-              <input type="number" id="vote-value-a" value=0>
-              <div class="number-controls">
-                <button class="number-control left" id="subtract-a" disabled>-</button>
-                <button class="number-control right" id="add-a">+</button>
-              </div>
+              <p class="card-label">Option A</p>
+              <div class="option-value">
+                <input type="number" id="vote-value-a" value=0>
+                <div class="number-controls">
+                  <button class="number-control left" id="subtract-a" disabled>-</button>
+                  <button class="number-control right" id="add-a">+</button>
+                </div>
+              </div>  
               <button class="button" id="vote-button-a" disabled>Vote A</button>
             </div>
             <div class="card option-card">
-              <div class="card-title">
-                <p class="card-label">Option B</p>
-              </div>
-              <input type="number" id="vote-value-b" value=0>
-              <div class="number-controls">
-                <button class="number-control left" id="subtract-b" disabled>-</button>
-                <button class="number-control right" id="add-b">+</button>
-              </div>
+              <p class="card-label">Option B</p>
+              <div class="option-value">
+                <input type="number" id="vote-value-b" value=0>
+                <div class="number-controls">
+                  <button class="number-control left" id="subtract-b" disabled>-</button>
+                  <button class="number-control right" id="add-b">+</button>
+                </div>
+              </div>  
               <button class="button" id="vote-button-b" disabled>Vote B</button>
             </div>
-          </div>  
-          <button class="button" id="abstain">Abstain</button>
+          <button class="button" id="abstain">Abstain</button>  
+          </div>
         </div>
 
         <div class="results-area">
           <div class="card stats-card">
-            <div class="card-title">
-              <p class="card-label">Stats</p>
-            </div>
+            <p class="results-label">Stats</p>
             <div id="stats-area">
               <p class="stat">Votes accrued: <span id="votes-accrued">10</span></p>
               <p class="stat">Votes used: <span id="total-votes-used">0</span></p>
@@ -78,40 +77,38 @@
             </div>
           </div>
           <div class="card history-card">
-            <div class="card-title">
-              <p class="card-label">History</p>
-            </div>
+            <p class="results-label">History</p>
             <div id="history-area">
               <p>New voter</p>
               <p>10 votes were accrued.</p>
             </div>
           </div>
         </div>
-        <div class="next-round-container">
-          <button class="button" id="next-round">Next Round</button>
-        </div> 
-
-        <div class="settings-area">
-          <div class="card settings-card">
-            <div class="card-title">
-              <p class="card-label">Settings</p>
-            </div>
-            <div class="settings">
-              <div class="setting">
-                <p class="setting-name">Vote Accrual Rate</p>
+      </div>
+      <div class="settings-area">
+        <div class="card settings-card">
+          <p class="results-label">Settings</p>
+          <div class="settings">
+            <div class="setting">
+              <p class="setting-name">Vote Accrual Rate</p>
+              <div class="option-value">
                 <input id="vote-accrual-rate-input" type="number" placeholder="10">
                 <button class="button" id="rate-set-button" onclick="setVoteAccrualRate()">Set</button>
-              </div>
-              <div class="setting">
-                <p class="setting-name">Active Streak Vote Accrual Rate Threshold (Rounds)</p>
+              </div>  
+            </div>
+            <div class="setting">
+              <p class="setting-name">Active Streak Vote Accrual Rate Threshold (Rounds)</p>
+              <div class="option-value">
                 <input id="active-streak-threshold-input" type="number" placeholder="10">
                 <button class="button" id="threshold-set-button" onclick="setActiveStreakThreshold()">Set</button>
-              </div>
-              <div class="setting">
-                <p class="setting-name">Active Streak Vote Accrual Rate</p>
+              </div>  
+            </div>
+            <div class="setting">
+              <p class="setting-name">Active Streak Vote Accrual Rate</p>
+              <div class="option-value">
                 <input id="active-streak-accrual-rate-input" type="number" placeholder="20">
                 <button class="button" id="streak-rate-set-button" onclick="setActiveStreakAccrualRate()">Set</button>
-              </div>
+              </div>  
             </div>
           </div>
         </div>
