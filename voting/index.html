@@ -1,0 +1,140 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Voting</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=tabular@600,701,1,700,301,500,400,501,601,401,300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Participation-Weighted Voting</h1>
+      </header>
+
+      <div class="rounds">
+        <p class="round-label">Round <span id="round-number">1</span>...</p>
+        <p class="round-label">You can use up to <span class="outline" id="round-weight">10</span> votes this round.</p>
+      </div>
+
+      <div class="confirm">
+        <div></div>
+        <div>
+          <div id="confirm-message">Confirm text</div>
+          <div class="confirm-choices">
+          <button id="confirm-yes">Yes</button>
+          <button id="confirm-no">No</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="voting-area">
+        <div class="option-area">
+          <div class="value-options">
+            <div class="card option-card">
+              <div class="card-title">
+                <p class="card-label">Option A</p>
+              </div>
+              <input type="number" id="vote-value-a" value=0>
+              <div class="number-controls">
+                <button class="number-control left" id="subtract-a" disabled>-</button>
+                <button class="number-control right" id="add-a">+</button>
+              </div>
+              <button class="button" id="vote-button-a" disabled>Vote A</button>
+            </div>
+            <div class="card option-card">
+              <div class="card-title">
+                <p class="card-label">Option B</p>
+              </div>
+              <input type="number" id="vote-value-b" value=0>
+              <div class="number-controls">
+                <button class="number-control left" id="subtract-b" disabled>-</button>
+                <button class="number-control right" id="add-b">+</button>
+              </div>
+              <button class="button" id="vote-button-b" disabled>Vote B</button>
+            </div>
+          </div>  
+          <button class="button" id="abstain">Abstain</button>
+        </div>
+
+        <div class="results-area">
+          <div class="card stats-card">
+            <div class="card-title">
+              <p class="card-label">Stats</p>
+            </div>
+            <div id="stats-area">
+              <p class="stat">Votes accrued: <span id="votes-accrued">10</span></p>
+              <p class="stat">Votes used: <span id="total-votes-used">0</span></p>
+              <p class="stat">Votes available: <span id="votes-available">10</span></p>
+              <p class="stat">Rounds active: <span id="rounds-active">0</span></p>
+              <p class="stat">Active streak: <span id="active-streak">0</span></p>
+              <p class="stat">Rounds missed: <span id="rounds-missed">0</span></p>
+              <p class="stat">Voted for A: <span id="vote-tally-a">0</span>&nbsp;(<span id="total-a-votes">0</span>)</p>
+              <p class="stat">Voted for B: <span id="vote-tally-b">0</span>&nbsp;(<span id="total-b-votes">0</span>)</p>
+              <p class="stat">Abstained: <span id="abstain-tally">0</span></p>
+            </div>
+          </div>
+          <div class="card history-card">
+            <div class="card-title">
+              <p class="card-label">History</p>
+            </div>
+            <div id="history-area">
+              <p>New voter</p>
+              <p>10 votes were accrued.</p>
+            </div>
+          </div>
+        </div>
+        <div class="next-round-container">
+          <button class="button" id="next-round">Next Round</button>
+        </div> 
+
+        <div class="settings-area">
+          <div class="card settings-card">
+            <div class="card-title">
+              <p class="card-label">Settings</p>
+            </div>
+            <div class="settings">
+              <div class="setting">
+                <p class="setting-name">Vote Accrual Rate</p>
+                <input id="vote-accrual-rate-input" type="number" placeholder="10">
+                <button class="button" id="rate-set-button" onclick="setVoteAccrualRate()">Set</button>
+              </div>
+              <div class="setting">
+                <p class="setting-name">Active Streak Vote Accrual Rate Threshold (Rounds)</p>
+                <input id="active-streak-threshold-input" type="number" placeholder="10">
+                <button class="button" id="threshold-set-button" onclick="setActiveStreakThreshold()">Set</button>
+              </div>
+              <div class="setting">
+                <p class="setting-name">Active Streak Vote Accrual Rate</p>
+                <input id="active-streak-accrual-rate-input" type="number" placeholder="20">
+                <button class="button" id="streak-rate-set-button" onclick="setActiveStreakAccrualRate()">Set</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="instructions">
+      <div class="instruction">
+        <h3>Step 1</h3>
+        <p>Input a number between 0 and 9.</p>
+      </div>
+      <div class="instruction">
+        <h3>Step 2</h3>
+        <p>Click "Make a Guess" to submit your guess and see who won the round.</p>
+      </div>
+      <div class="instruction">
+        <h3>Step 3</h3>
+        <p>Click "Next Round" to play again.</p>
+      </div>
+    </div>
+    -->
+    <script src="./script.js"></script>
+    <script src="./vote.js"></script>
+    <script src="./settings.js"></script>
+  </body>
+</html>
