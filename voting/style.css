@@ -76,13 +76,52 @@ h1 {
 
 @media (min-width: 0px) {
   #next-round {
-    margin: 12px 0;
+    margin: 20px 0;
   }
 }
 
 @media (min-width: 1020px) {
   #next-round {
     margin: 0 20px 0 0;
+  }
+}
+
+@media (min-width: 0px) {
+  .round-name {
+    margin: 20px 0;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1020px) {
+  .round-name {
+    margin: 0;
+    padding: 12px 20px;
+  }
+}
+
+@media (min-width: 0px) {
+  .round-info {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 1020px) {
+  .round-info {
+    padding: 12px 20px;
+  }
+}
+
+@media (min-width: 0px) {
+  .option-area {
+    border-bottom: 1px solid rgb(0, 0, 0);
+  }
+}
+
+@media (min-width: 1020px) {
+  .option-area {
+    border-right: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
   }
 }
 
@@ -95,10 +134,13 @@ h1 {
   border-bottom: 1px solid rgb(0, 0, 0);
 }
 
-.round-name, .round-info {
+.round-name {
+  display: inline-block;
+}
+
+.round-info {
   display: inline-block;
   margin: 0;
-  padding: 12px 20px;
 }
 
 #round-weight {
@@ -129,13 +171,11 @@ h1 {
   justify-content: space-between;
   padding: 20px;
   /*background: rgba(127, 197, 255, 0.4);*/
-  border-right: 1px solid rgb(0, 0, 0);
-  border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 .option-card {
   display: flex;
-  background-color: rgb(230, 230, 230);
+  background-color: rgba(220, 220, 220, 0.5);
   height: auto;
   width: auto;
   gap: 10px;
@@ -145,6 +185,13 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.option-right {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  gap: 24px;
 }
 
 .option-value {
@@ -173,7 +220,7 @@ h1 {
 .stats-card {
   display: flex;
   flex-direction: column;
-  background-color: rgb(230, 230, 230);
+  background-color: rgba(220, 220, 220, 0.5);
   width: 100%;
   height: 100%;
   align-content: left;
@@ -197,7 +244,7 @@ h1 {
 .history-card {
   display: flex;
   flex-direction: column;
-  background-color: rgb(230, 230, 230);
+  background-color: rgba(220, 220, 220, 0.5);
   width: 100%;
   height: 350px;
   justify-content: flex-start;
@@ -241,7 +288,7 @@ h1 {
 .settings-card {
   display: flex;
   flex-direction: column;
-  background-color: rgb(230, 230, 230);
+  background-color: rgba(220, 220, 220, 0.5);
   width: 100%;
   height: auto;
   align-content: left;
@@ -261,7 +308,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-self: center;
-  gap: 20px;
+  gap: 10px;
   margin: 0;
   background-color: rgb(234, 234, 234);
   border-radius: 20px;
@@ -272,7 +319,7 @@ h1 {
   margin: 0;
   text-align: center;
   align-self: center;
-  width: 200px;
+  width: auto;
   flex-wrap: wrap;
 }
 
@@ -281,7 +328,7 @@ input {
   height: 37px;
   width: 87.2px;
   border: 1px solid #000000;
-  border-radius: 10px;
+  border-radius: 4px;
   text-align: center;
   outline: none;
 }
@@ -311,7 +358,7 @@ input[type=number]::-webkit-inner-spin-button {
   width: 92px;
   margin: 0;
   border: 1px solid #000000;
-  border-radius: 10px;
+  border-radius: 4px;
   text-align: center;
   align-self: center;
 }
@@ -321,6 +368,7 @@ input[type=number]::-webkit-inner-spin-button {
   flex-direction: row;
   font-size: 0;
   align-self: center;
+  gap: 4px;
 }
 
 .number-control {
@@ -352,13 +400,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .left {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .right {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .no-left-border {
@@ -373,7 +421,7 @@ input[type=number]::-webkit-inner-spin-button {
 .button {
   width: auto;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: rgb(250, 250, 250);
   padding: 6px 10px;
   color: rgb(0, 0, 0);
@@ -399,10 +447,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 @keyframes glowing {
-  0% { box-shadow: 0 0 -10px rgb(30, 30, 30); }
-  40% { box-shadow: 0 0 20px rgb(30, 30, 30); }
-  60% { box-shadow: 0 0 20px rgb(30, 30, 30); }
-  100% { box-shadow: 0 0 -10px rgb(30, 30, 30);}
+  0% { box-shadow: 0 0 -10px rgb(109, 189, 255); }
+  40% { box-shadow: 0 0 20px rgb(109, 189, 255); }
+  60% { box-shadow: 0 0 20px rgb(109, 189, 255); }
+  100% { box-shadow: 0 0 -10px rgb(109, 189, 255);}
 }
 
 .button-glow {
@@ -460,7 +508,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 #confirm-yes, #confirm-no {
   font-size: 17px;
-  border-radius: 10px;
+  border-radius: 4px;
   width: 70px;
   padding: 6px 10px;
   color: rgb(0, 0, 0);
