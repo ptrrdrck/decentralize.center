@@ -12,6 +12,7 @@ let activeStreakThreshold = 10;
 let activeStreakAccrualRate = 20;
 let roundsMissed = 0;
 let currentRoundWeight = votesAvailable;
+let myParticipationRate;
 
 const disableVoteButtons = () => {
   addButtonA.setAttribute('disabled', true);
@@ -45,6 +46,7 @@ const updateStats = () => {
       votesAccrued = voteAccrualRate;
     }
     votesAvailable = totalVotesAccrued - totalVotesUsed;
+    myParticipationRate = `${Math.floor((roundsActive / currentRoundNumber) * 100)}%`;
   } else if (votedB == true) {
     roundsActive++;
     activeStreak++;
@@ -63,6 +65,7 @@ const updateStats = () => {
       votesAccrued = voteAccrualRate;
     }
     votesAvailable = totalVotesAccrued - totalVotesUsed;
+    myParticipationRate = `${Math.floor((roundsActive / currentRoundNumber) * 100)}%`;
   } else if (abstained == true) {
     roundsActive++;
     activeStreak++;
@@ -80,6 +83,7 @@ const updateStats = () => {
       votesAccrued = voteAccrualRate;
     }
     votesAvailable = totalVotesAccrued - totalVotesUsed;
+    myParticipationRate = `${Math.floor((roundsActive / currentRoundNumber) * 100)}%`;
   } else {
   }
   totalVotesAccruedDisplay.innerText = totalVotesAccrued;
@@ -92,14 +96,17 @@ const updateStats = () => {
   bTallyDisplay.innerText = bTally;
   bTallyWeightDisplay.innerText = bTallyWeight;
   abstainTallyDisplay.innerText = abstainTally;
+  participationRateDisplay.innerText = myParticipationRate;
 }
 
 const updateMissedRound = () => {
   roundsMissed++;
   roundStatus = 'Missed';
   activeStreak = 0;
+  myParticipationRate = `${Math.floor((roundsActive / currentRoundNumber) * 100)}%`;
   roundsMissedDisplay.innerText = roundsMissed;
   activeStreakDisplay.innerText = activeStreak;
+  participationRateDisplay.innerText = myParticipationRate;
 }
 
 const updateHistory = () => {

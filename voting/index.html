@@ -16,7 +16,7 @@
       </header>
 
       <div class="rounds">
-        <p class="round-name">Round <span id="round-number">1</span></p>
+        <p class="round-name">Player 1, Round <span id="round-number">1</span></p>
         <p class="round-info">You can use up to <span id="round-weight">10</span> votes this round.</p>
         <button class="button next-round" id="next-round">Next Round</button>
       </div>
@@ -67,7 +67,7 @@
 
         <div class="results-area">
           <div class="card stats-card">
-            <p class="results-label">Stats</p>
+            <p class="results-label">My Stats</p>
             <div id="stats-area">
               <p class="stat">Votes accrued: <span id="votes-accrued">10</span></p>
               <p class="stat">Votes used: <span id="total-votes-used">0</span></p>
@@ -78,10 +78,11 @@
               <p class="stat">Voted for A: <span id="vote-tally-a">0</span>&nbsp;(<span id="total-a-votes">0</span>)</p>
               <p class="stat">Voted for B: <span id="vote-tally-b">0</span>&nbsp;(<span id="total-b-votes">0</span>)</p>
               <p class="stat">Abstained: <span id="abstain-tally">0</span></p>
+              <p class="stat">Participation rate: <span id="participation-rate">0%</span></p>
             </div>
           </div>
           <div class="card history-card">
-            <p class="results-label">History</p>
+            <p class="results-label">My History</p>
             <div id="history-area">
               <p>New voter</p>
               <p>10 votes were accrued.</p>
@@ -89,6 +90,7 @@
           </div>
         </div>
       </div>
+
       <div class="settings-area">
         <div class="card settings-card">
           <p class="results-label">Settings</p>
@@ -117,6 +119,17 @@
           </div>
         </div>
       </div>
+
+      <div class="other-players-area">
+        <div class="card other-players-card">
+          <p class="other-players-label">Other Players</p>
+          <div id="players-area"></div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p class="footer-info">Made by <a href="https://trepe.xyz" target="_blank" id="footer-link">trepe</a>.</p>
+      </div>
     </div>
     <!--
     <div class="instructions">
@@ -137,5 +150,6 @@
     <script src="./script.js"></script>
     <script src="./vote.js"></script>
     <script src="./settings.js"></script>
+    <script src="./players.js"></script>
   </body>
 </html>

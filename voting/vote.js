@@ -26,6 +26,7 @@ const roundWeightDisplay = document.getElementById('round-weight');
 const roundsMissedDisplay = document.getElementById('rounds-missed');
 const roundsActiveDisplay = document.getElementById('rounds-active');
 const activeStreakDisplay = document.getElementById('active-streak');
+const participationRateDisplay = document.getElementById('participation-rate');
 
 const voteButtonA = document.getElementById('vote-button-a');
 const voteButtonB = document.getElementById('vote-button-b');

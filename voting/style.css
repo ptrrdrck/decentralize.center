@@ -1,380 +1,378 @@
 * {
-  font-family: 'Tabular', sans-serif;
+  font-family: Tabular,sans-serif;
   font-size: 17px;
-  box-sizing: border-box;
+  box-sizing: border-box
 }
-
+#abstain,
+body,
+.container,
+h1,
+header,
 html {
-  margin: 0;
+  margin: 0
 }
-
 body {
-  margin: 0;
   padding: 0;
-  background: rgb(237,237,237);
-  background: linear-gradient(180deg, rgb(240, 240, 240) 0%, rgb(234, 234, 234) 50%, rgba(241,241,241,1) 100%);
+  background: #ededed;
+  background: linear-gradient(180deg,#f0f0f0 0,#eaeaea 50%,#f1f1f1 100%)
 }
-
 .container {
-  margin: 0;
   min-height: 100vh;
-  text-align: center;
+  text-align: center
 }
-
+.card,
+.confirm-choices,
+.controls,
+header,
+.number-control,
+.number-controls,
+.option-area,
+.option-card,
+.option-right,
+.option-value,
+.options,
+#players-area,
+.results-area,
+.rounds,
+.setting,
+.settings,
+.settings-area,
+.voting-area {
+  display: flex
+}
 header {
-  display: flex;
   justify-content: left;
   height: auto;
-  margin: 0;
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid #000
 }
-
 h1 {
   display: inline-block;
-  margin: 0;
   padding: 17px 20px;
-  font-family: Helvetica, sans-serif;
+  font-family: Helvetica,sans-serif;
   font-size: 24px;
-  letter-spacing: 1px;
+  letter-spacing: 1px
 }
-
-@media (min-width: 0px) {
-  .rounds, .voting-area, .results-area, .settings, .setting, .option-card {
-    flex-direction: column;
+@media (max-width:599px) {
+  .option-card,
+  .results-area,
+  .rounds,
+  .setting,
+  .settings,
+  .voting-area {
+    flex-direction: column
   }
-}
-
-@media (min-width: 1020px) {
-  .rounds, .voting-area, .results-area, .settings, .setting, .option-card {
-    flex-direction: row;
-  }
-}
-
-@media (min-width: 0px) {
-  .option-area {
-    width: 100%;
-  }
-}
-
-@media (min-width: 1020px) {
-  .option-area {
-    width: 40%;
-  }
-}
-
-@media (min-width: 0px) {
+  .option-area,
   .results-area {
-    width: 100%;
+    width: 100%
   }
-}
-
-@media (min-width: 1020px) {
-  .results-area {
-    width: 60%;
-  }
-}
-
-@media (min-width: 0px) {
   #next-round {
-    margin: 20px 0;
+    margin: 20px 0
   }
-}
-
-@media (min-width: 1020px) {
-  #next-round {
-    margin: 0 20px 0 0;
-  }
-}
-
-@media (min-width: 0px) {
   .round-name {
     margin: 20px 0;
-    padding: 0;
+    padding: 0
+  }
+  .round-info {
+    padding: 0 20px
+  }
+  .option-area {
+    border-bottom: 1px solid #000
   }
 }
-
-@media (min-width: 1020px) {
+@media (min-width:600px) {
+  .rounds,
+  .setting,
+  .settings,
+  .voting-area {
+    flex-direction: row
+  }
+  .option-card,
+  .option-right,
+  .results-area {
+    flex-direction: column
+  }
+  .option-area {
+    width: 50%;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000
+  }
+  .results-area {
+    width: 50%
+  }
+  #next-round {
+    margin: 0 20px 0 0
+  }
   .round-name {
     margin: 0;
-    padding: 12px 20px;
+    padding: 12px 20px
   }
-}
-
-@media (min-width: 0px) {
   .round-info {
-    padding: 0 20px;
+    max-width: 300px;
+    padding: 12px 20px
   }
 }
-
-@media (min-width: 1020px) {
+@media (min-width:1024px) {
+  .option-card,
+  .option-right,
+  .results-area,
+  .rounds,
+  .setting,
+  .settings,
+  .voting-area {
+    flex-direction: row
+  }
+  .option-area {
+    width: 40%;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000
+  }
+  .results-area {
+    width: 60%
+  }
+  #next-round {
+    margin: 0 20px 0 0
+  }
+  .round-name {
+    margin: 0;
+    padding: 12px 20px
+  }
   .round-info {
-    padding: 12px 20px;
+    max-width: none;
+    padding: 12px 20px
   }
 }
-
-@media (min-width: 0px) {
-  .option-area {
-    border-bottom: 1px solid rgb(0, 0, 0);
-  }
-}
-
-@media (min-width: 1020px) {
-  .option-area {
-    border-right: 1px solid rgb(0, 0, 0);
-    border-bottom: 1px solid rgb(0, 0, 0);
-  }
-}
-
 .rounds {
-  display: flex;
   align-items: center;
   justify-content: space-between;
   height: auto;
   margin-left: 0 0 20px;
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid #000
 }
-
 .round-name {
-  display: inline-block;
+  display: inline-block
 }
-
 .round-info {
   display: inline-block;
-  margin: 0;
+  margin: 0
 }
-
 #round-weight {
-  font-weight: 500;
+  font-weight: 500
 }
-
 .voting-area {
-  display: flex;
   justify-content: left;
-  margin: 0;
+  margin: 0
 }
-
 .card {
-  display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px
 }
-
 .card-label {
   font-weight: 500;
-  margin: 0;
+  margin: 0
 }
-
 .option-area {
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
-  /*background: rgba(127, 197, 255, 0.4);*/
+  padding: 20px
 }
-
 .option-card {
-  display: flex;
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: rgba(220,220,220,.5);
   height: auto;
   width: auto;
-  gap: 10px;
+  gap: 10px
 }
-
 .options {
-  display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 20px
 }
-
 .option-right {
-  display: flex;
-  flex-direction: row;
   align-self: center;
-  gap: 24px;
+  gap: 24px
 }
-
 .option-value {
-  display: flex;
   flex-direction: row;
   align-self: center;
-  gap: 6px;
+  gap: 6px
 }
-
 .results-area {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   gap: 20px;
-  /*background: rgba(148, 127, 255, 0.4);*/
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid #000
 }
-
 .results-label {
   font-weight: 500;
   padding-bottom: 10px;
-  margin: 0;
+  margin: 0
 }
-
 .stats-card {
-  display: flex;
   flex-direction: column;
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: rgba(220,220,220,.5);
   width: 100%;
-  height: 100%;
-  align-content: left;
-  justify-content: flex-start;
+  height: 100%
 }
-
 #stats-area {
-  background-color: rgb(234, 234, 234);
+  background-color: #eaeaea;
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 10px
 }
-
 .stat {
   padding: 4px 10px;
   margin: 0;
   width: 100%;
-  text-align: left;
+  text-align: left
 }
-
 .history-card {
-  display: flex;
   flex-direction: column;
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: rgba(220,220,220,.5);
   width: 100%;
-  height: 350px;
-  justify-content: flex-start;
+  height: 383px
 }
-
 #history-area {
-  background-color: rgb(234, 234, 234);
+  background-color: #eaeaea;
   padding: 4px 20px 10px;
   overflow: scroll;
   width: 100%;
-  height: 100%;
+  height: 100%
 }
-
 #history-area p {
   margin: 0;
-  text-align: left;
+  text-align: left
 }
-
 #history-area p:nth-child(4n+1) {
   margin: 10px 0 0;
   text-align: left;
-  font-weight: 500;
+  font-weight: 500
 }
-
 #history-area p:nth-child(4n) {
-  margin: 0 0 20px;
+  margin: 0 0 20px
 }
-
 .settings-area {
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin: 0;
   width: auto;
   padding: 20px;
-  /*background: rgba(255, 193, 127, 0.4);
-  border-bottom: 1px solid rgb(0, 0, 0);*/
+  border-bottom: 1px solid #000
 }
-
 .settings-card {
-  display: flex;
   flex-direction: column;
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: rgba(220,220,220,.5);
   width: 100%;
-  height: auto;
-  align-content: left;
-  justify-content: flex-start;
+  height: auto
 }
-
 .settings {
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: rgb(234, 234, 234);
+  background-color: #eaeaea;
   width: 100%;
-  height: 100%;
+  height: 100%
 }
-
 .setting {
-  display: flex;
   justify-content: space-between;
   align-self: center;
   gap: 10px;
   margin: 0;
-  background-color: rgb(234, 234, 234);
+  background-color: #eaeaea;
   border-radius: 20px;
-  padding: 10px;
+  padding: 10px
 }
-
 .setting-name {
   margin: 0;
   text-align: center;
   align-self: center;
   width: auto;
-  flex-wrap: wrap;
+  flex-wrap: wrap
 }
-
+.other-players-area {
+  background: rgb(21, 21, 21);
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  border-bottom: 1px solid #fff
+}
+.other-players-card {
+  flex-direction: column;
+  background-color: rgba(43, 43, 43, 0.5);
+  width: 100%;
+  height: 100%
+}
+.other-players-label {
+  color: #fff;
+  font-weight: 500;
+  padding-bottom: 10px;
+  margin: 0
+}
+#players-area {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: auto;
+  gap: 10px;
+  height: auto
+}
+.other-player, .other-player-history {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 30%;
+  background-color: rgb(21, 21, 21);
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  min-width: 280px;
+  min-height: 280px;
+  padding: 10px
+}
 input {
-  background: rgb(250, 250, 250);
+  background: #fafafa;
   height: 37px;
   width: 87.2px;
-  border: 1px solid #000000;
+  border: 1px solid #000;
   border-radius: 4px;
   text-align: center;
-  outline: none;
+  outline: 0
 }
-
 input::placeholder {
-  color: #000000;
+  color: #000
 }
-
 input:focus::placeholder {
-  color: transparent;
+  color: transparent
 }
-
 input[disabled] {
   color: #a0a0a0;
-  background-color: rgb(234, 234, 234);
-  border: 1px solid #a0a0a0;
+  background-color: #eaeaea;
+  border: 1px solid #a0a0a0
 }
-
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  appearance: none;
+  appearance: none
 }
-
-#vote-accrual-rate-input, #active-streak-threshold-input, #active-streak-accrual-rate-input {
-  background: rgb(250, 250, 250);
+#active-streak-accrual-rate-input,
+#active-streak-threshold-input,
+#vote-accrual-rate-input {
+  background: #fafafa;
   height: 37px;
   width: 92px;
   margin: 0;
-  border: 1px solid #000000;
+  border: 1px solid #000;
   border-radius: 4px;
   text-align: center;
-  align-self: center;
+  align-self: center
 }
-
 .number-controls {
-  display: flex;
   flex-direction: row;
   font-size: 0;
   align-self: center;
-  gap: 4px;
+  gap: 4px
 }
-
 .number-control {
-  display: flex;
-  border: 1px solid #000000;
-  background: rgb(250, 250, 250);
+  border: 1px solid #000;
+  background: #fafafa;
   width: auto;
   height: 37px;
   padding: 0 10px;
@@ -383,158 +381,172 @@ input[type=number]::-webkit-inner-spin-button {
   line-height: 32px;
   justify-content: center;
   vertical-align: middle;
-  color: #000000;
-  cursor: pointer;
+  color: #000;
+  cursor: pointer
 }
-
 .number-control:hover {
-  transition-duration: 0.3s;
-  background-color: rgb(236, 236, 236);
+  transition-duration: .3s;
+  background-color: #ececec
 }
-
 .number-control[disabled] {
   border: 1px solid #a0a0a0;
-  background-color: rgb(234, 234, 234);
+  background-color: #eaeaea;
   color: #a0a0a0;
-  cursor: default;
+  cursor: default
 }
-
 .left {
   border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px
 }
-
 .right {
   border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px
 }
-
 .no-left-border {
-  border-left-width: 0px;
+  border-left-width: 0
 }
-
 .controls {
-  display: flex;
-  justify-content: space-around;
+  justify-content: space-around
 }
-
 .button {
   width: auto;
   cursor: pointer;
   border-radius: 4px;
-  background-color: rgb(250, 250, 250);
+  background-color: #fafafa;
   padding: 6px 10px;
-  color: rgb(0, 0, 0);
-  border: 1px solid rgb(0, 0, 0);
-  align-self: center;
+  color: #000;
+  border: 1px solid #000;
+  align-self: center
 }
-
 .button:hover {
-  transition-duration: 0.3s;
-  background-color: rgb(236, 236, 236);
+  transition-duration: .3s;
+  background-color: #ececec
 }
-
 .button[disabled] {
-  transition-duration: 0.3s;
-  background-color: rgb(234, 234, 234);
+  transition-duration: .3s;
+  background-color: #eaeaea;
   color: #a0a0a0;
   border: 1px solid #a0a0a0;
-  cursor: default;
+  cursor: default
 }
-
-#abstain {
-  margin: 0;
-}
-
 @keyframes glowing {
-  0% { box-shadow: 0 0 -10px rgb(109, 189, 255); }
-  40% { box-shadow: 0 0 20px rgb(109, 189, 255); }
-  60% { box-shadow: 0 0 20px rgb(109, 189, 255); }
-  100% { box-shadow: 0 0 -10px rgb(109, 189, 255);}
+  0%,
+  100% {
+    box-shadow: 0 0 -10px rgb(178, 178, 178)
+  }
+  40%,
+  60% {
+    box-shadow: 0 0 20px rgb(178, 178, 178)
+  }
 }
-
+@keyframes blink {
+  0% {
+    color: #000;
+    background-color: #fff;
+  }
+  25% {
+    color: #fff;
+    background-color: #000;
+  }
+  50% {
+    color: #000;
+    background-color: #fff;
+  }
+  75% {
+    color: #fff;
+    background-color: #000;
+  }
+  100% {
+    color: #000;
+    background-color: #fff;
+  }
+}
 .button-glow {
-  animation: glowing 2700ms infinite;  
+  animation: blink 3.7s infinite
 }
-
-#rate-set-button, #threshold-set-button, #streak-rate-set-button {
-  width: 77px;
+#rate-set-button,
+#streak-rate-set-button,
+#threshold-set-button {
+  width: 77px
 }
-
 .confirm {
-  display: none;
+  display: none
 }
-
 .confirm > div:first-of-type {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  top: 0px;
-  left: 0px;
-  z-index: 2;
+  background: rgba(0,0,0,.5);
+  top: 0;
+  left: 0;
+  z-index: 2
 }
-
 .confirm > div:last-of-type {
   padding: 10px 20px;
-  background: white;
+  background: #fff;
   position: fixed;
   width: auto;
   height: auto;
   left: 50%;
   top: 50%;
   vertical-align: middle;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
   border-radius: 25px;
   border: 1px solid #333;
-  z-index: 3;
+  z-index: 3
 }
-
 .confirm > div:last-of-type div:first-of-type {
   min-width: 250px;
-  padding: 10px 10px 20px;
+  padding: 10px 10px 20px
 }
-
 .confirm > div:last-of-type div:last-of-type {
-  text-align: center;
+  text-align: center
 }
-
 .confirm-choices {
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 20px 10px;
+  padding: 0 20px 10px
 }
-
-#confirm-yes, #confirm-no {
+#confirm-no,
+#confirm-yes {
   font-size: 17px;
   border-radius: 4px;
   width: 70px;
   padding: 6px 10px;
-  color: rgb(0, 0, 0);
-  background: rgb(250, 250, 250);
-  border: 1px solid rgb(0, 0, 0);
+  color: #000;
+  background: #fafafa;
+  border: 1px solid #000
 }
-
-#confirm-yes:hover, #confirm-no:hover {
+#confirm-no:hover,
+#confirm-yes:hover {
   cursor: pointer;
-  transition-duration: 0.3s;
-  background-color: rgb(236, 236, 236);
+  transition-duration: .3s;
+  background-color: #ececec
 }
-
+.footer {
+  background-color: rgb(21, 21, 21);
+  color: #fff;
+}
+.footer-info {
+  display: inline-block;
+  margin: 20px
+}
+#footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500
+}
 .instructions {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  padding-bottom: 5px;
+  padding-bottom: 5px
 }
-
 .instruction {
   width: 350px;
   padding: 2px;
-  text-align: center;
+  text-align: center
 }
-
 .instructions h3 {
-  font-size: 14px;
+  font-size: 14px
 }
