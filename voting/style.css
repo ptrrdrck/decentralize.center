@@ -18,12 +18,30 @@ body {
 }
 .container {
   min-height: 100vh;
+  flex-direction: column;
   text-align: center
 }
+footer,
+header {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.app-area {
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.accordion,
+.app-area,
 .card,
 .confirm-choices,
+.container,
 .controls,
+#copyright,
+.footer-info,
+#game-stats-area,
 header,
+.left-area,
 .number-control,
 .number-controls,
 .option-area,
@@ -31,7 +49,6 @@ header,
 .option-right,
 .option-value,
 .options,
-#players-area,
 .results-area,
 .rounds,
 .setting,
@@ -47,23 +64,37 @@ header {
 }
 h1 {
   display: inline-block;
-  padding: 17px 20px;
+  padding: 20px;
   font-family: Helvetica,sans-serif;
   font-size: 24px;
   letter-spacing: 1px
 }
 @media (max-width:599px) {
+  .accordion {
+    height: 567px;
+  }
+  .footer-info {
+    margin: 0 0 16px;
+  }
   .option-card,
+  .option-right,
   .results-area,
   .rounds,
   .setting,
   .settings,
-  .voting-area {
+  .settings-area,
+  .voting-area,
+  .left-area {
     flex-direction: column
+  }
+  .option-card,
+  .option-right {
+    gap: 20px
   }
   .option-area,
   .results-area {
-    width: 100%
+    width: 100%;
+    border-bottom: 1px solid #000
   }
   #next-round {
     margin: 20px 0
@@ -75,70 +106,71 @@ h1 {
   .round-info {
     padding: 0 20px
   }
-  .option-area {
-    border-bottom: 1px solid #000
-  }
 }
 @media (min-width:600px) {
+  .accordion {
+    height: unset;
+  }
+  .footer-info {
+    margin: 0;
+  }
   .rounds,
   .setting,
   .settings,
   .voting-area {
     flex-direction: row
   }
+  .left-area,
   .option-card,
   .option-right,
   .results-area {
     flex-direction: column
   }
-  .option-area {
-    width: 50%;
+  .left-area {
+    width: 48%;
+  }
+  .accordion {
+    width: 52%;
+  }
+  .option-area,
+  .results-area {
     border-right: 1px solid #000;
     border-bottom: 1px solid #000
   }
-  .results-area {
-    width: 50%
+  .option-right {
+    gap: 24px
   }
   #next-round {
     margin: 0 20px 0 0
   }
   .round-name {
     margin: 0;
-    padding: 12px 20px
+    padding: 20px
   }
   .round-info {
     max-width: 300px;
-    padding: 12px 20px
+    padding: 20px
   }
 }
 @media (min-width:1024px) {
   .option-card,
   .option-right,
-  .results-area,
   .rounds,
   .setting,
   .settings,
   .voting-area {
     flex-direction: row
   }
-  .option-area {
-    width: 40%;
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000
-  }
-  .results-area {
-    width: 60%
-  }
   #next-round {
     margin: 0 20px 0 0
   }
   .round-name {
     margin: 0;
-    padding: 12px 20px
+    padding: 20px
   }
   .round-info {
     max-width: none;
-    padding: 12px 20px
+    padding: 20px
   }
 }
 .rounds {
@@ -160,12 +192,9 @@ h1 {
 }
 .voting-area {
   justify-content: left;
+  height: 100%;
+  flex-grow: 1;
   margin: 0
-}
-.card {
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px
 }
 .card-label {
   font-weight: 500;
@@ -174,21 +203,26 @@ h1 {
 .option-area {
   flex-direction: column;
   justify-content: space-between;
+  flex-grow: 1;
+  height: auto;
   padding: 20px
 }
 .option-card {
   background-color: rgba(220,220,220,.5);
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
   height: auto;
-  width: auto;
-  gap: 10px
+  width: auto
 }
 .options {
   flex-direction: column;
-  gap: 20px
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 20px;
 }
 .option-right {
-  align-self: center;
-  gap: 24px
+  align-self: center
 }
 .option-value {
   flex-direction: row;
@@ -196,27 +230,19 @@ h1 {
   gap: 6px
 }
 .results-area {
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 20px;
-  gap: 20px;
-  border-bottom: 1px solid #000
+  height: 45%;
+  flex-grow: 1
 }
 .results-label {
   font-weight: 500;
   padding-bottom: 10px;
   margin: 0
 }
-.stats-card {
-  flex-direction: column;
-  background-color: rgba(220,220,220,.5);
-  width: 100%;
-  height: 100%
-}
 #stats-area {
   background-color: #eaeaea;
-  width: 100%;
-  height: 100%;
   padding: 10px
 }
 .stat {
@@ -225,18 +251,12 @@ h1 {
   width: 100%;
   text-align: left
 }
-.history-card {
-  flex-direction: column;
-  background-color: rgba(220,220,220,.5);
-  width: 100%;
-  height: 383px
-}
 #history-area {
   background-color: #eaeaea;
   padding: 4px 20px 10px;
   overflow: scroll;
   width: 100%;
-  height: 100%
+  max-height: 420.5px;
 }
 #history-area p {
   margin: 0;
@@ -250,31 +270,17 @@ h1 {
 #history-area p:nth-child(4n) {
   margin: 0 0 20px
 }
-.settings-area {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  width: auto;
-  padding: 20px;
-  border-bottom: 1px solid #000
-}
-.settings-card {
-  flex-direction: column;
-  background-color: rgba(220,220,220,.5);
-  width: 100%;
-  height: auto
-}
-.settings {
-  flex-wrap: wrap;
-  justify-content: space-between;
+#settings-area {
   background-color: #eaeaea;
-  width: 100%;
-  height: 100%
+  justify-content: flex-start;
+  overflow: scroll;
+  max-height: 420.5px;
+  padding: 10px
 }
 .setting {
   justify-content: space-between;
   align-self: center;
+  width: 100%;
   gap: 10px;
   margin: 0;
   background-color: #eaeaea;
@@ -283,50 +289,10 @@ h1 {
 }
 .setting-name {
   margin: 0;
-  text-align: center;
+  text-align: left;
   align-self: center;
-  width: auto;
+  width: 60%;
   flex-wrap: wrap
-}
-.other-players-area {
-  background: rgb(21, 21, 21);
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  gap: 20px;
-  border-bottom: 1px solid #fff
-}
-.other-players-card {
-  flex-direction: column;
-  background-color: rgba(43, 43, 43, 0.5);
-  width: 100%;
-  height: 100%
-}
-.other-players-label {
-  color: #fff;
-  font-weight: 500;
-  padding-bottom: 10px;
-  margin: 0
-}
-#players-area {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: auto;
-  gap: 10px;
-  height: auto
-}
-.other-player, .other-player-history {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 30%;
-  background-color: rgb(21, 21, 21);
-  color: #fff;
-  width: 100%;
-  height: 100%;
-  min-width: 280px;
-  min-height: 280px;
-  padding: 10px
 }
 input {
   background: #fafafa;
@@ -348,9 +314,26 @@ input[disabled] {
   background-color: #eaeaea;
   border: 1px solid #a0a0a0
 }
+input[disabled]:hover,
+.number-control[disabled]:hover,
+.button[disabled]:hover {
+  cursor: not-allowed;
+}
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   appearance: none
+}
+input[type=checkbox] {
+  accent-color: #000;
+  height: 37px;
+  width: 37px;
+  border: 1px solid #000;
+  background: #fff;
+  border-radius: 4px;
+  margin: 0;
+}
+input[type=checkbox]:checked {
+  border-radius: 4px;
 }
 #active-streak-accrual-rate-input,
 #active-streak-threshold-input,
@@ -429,6 +412,13 @@ input[type=number]::-webkit-inner-spin-button {
   border: 1px solid #a0a0a0;
   cursor: default
 }
+.next-round-float {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%,-50%);
+}
 @keyframes glowing {
   0%,
   100% {
@@ -461,7 +451,7 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #fff;
   }
 }
-.button-glow {
+.button-blink {
   animation: blink 3.7s infinite
 }
 #rate-set-button,
@@ -491,7 +481,7 @@ input[type=number]::-webkit-inner-spin-button {
   top: 50%;
   vertical-align: middle;
   transform: translate(-50%,-50%);
-  border-radius: 25px;
+  border-radius: 4px;
   border: 1px solid #333;
   z-index: 3
 }
@@ -523,18 +513,22 @@ input[type=number]::-webkit-inner-spin-button {
   transition-duration: .3s;
   background-color: #ececec
 }
-.footer {
-  background-color: rgb(21, 21, 21);
-  color: #fff;
-}
 .footer-info {
-  display: inline-block;
-  margin: 20px
+  padding: 20px;
+  justify-content: center;
+  align-self: center
 }
 #footer-link {
-  color: #fff;
+  color: #000;
   text-decoration: none;
+  padding-left: 8px;
   font-weight: 500
+}
+#copyright {
+  font-size: 20px;
+  font-weight: 100;
+  padding: 0 8px 0 10px;
+  line-height: 28px;
 }
 .instructions {
   width: 100%;
@@ -549,4 +543,95 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .instructions h3 {
   font-size: 14px
+}
+.accordion {
+  flex-direction: column;
+  background: none;
+  overflow: hidden;
+  border-bottom: 1px solid #000
+}
+.accordion-tabs {
+  display: flex;
+  background: none;
+}
+.accordion-tabs .accordion-tab {
+  background: none;
+  padding: 20px;
+  font: inherit;
+  font-weight: 500;
+  flex: 1;
+  border: none;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+.accordion-tabs .accordion-tab:hover {
+  background: #e2e2e2;
+  /*background: #beefff;*/
+}
+.accordion-tabs .accordion-tab:last-child {
+  border-right: 0;
+}
+.accordion-tabs .accordion-tab.accordion-active {
+  background: #dcdcdc80;
+}
+.accordion-tabs :focus {
+  outline: none;
+}
+.accordion-item {
+  padding: 20px;
+  display: none;
+  border: none;
+  background: #dcdcdc80;
+}
+.accordion-item.accordion-active {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.accordion-item:last-child {
+  border: none;
+}
+.accordion-item__label {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: padding 0.2s ease;
+  position: relative;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.accordion-item__container {
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  padding: 0;
+  overflow: scroll;
+  opacity: 0;
+  transition: padding 0.2s ease, opacity 0.5s 0.15s ease;
+}
+.accordion-item.accordion-active .accordion-item__container {
+  padding: 0;
+}
+.accordion-active {
+  background: rgba(220,220,220,.5);
+}
+.accordion-active .accordion-item__label {
+  padding-bottom: 0;
+  cursor: inherit;
+}
+.accordion-active .accordion-item__container {
+  height: auto;
+  flex-grow: 1;
+  opacity: 1;
+}
+.accordion-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.accordion + p {
+  color: #eaeaea;
+  font-weight: 300;
+  font-size: 0.9rem;
+  margin-top: 2rem;
 }

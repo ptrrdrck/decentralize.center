@@ -1,3 +1,4 @@
+/*
 const playerTesting = document.getElementById('players-area');
 
 let totalFakePlayers = 10;
@@ -25,7 +26,7 @@ function createFakePlayers() {
     let player = new Player(`${playerId}`, `${randParticipationRate}`, `${randVoteARate}`, `${randVoteBRate}`, `${randAbstainRate}`);
     let div = document.createElement('div');
     div.className = 'other-player';
-    div.innerHTML = `<span>Player ${player.plyrId} Stats</span>` + '<br />' + '<br />' + `<span>Participation Rate: ${player.participationRate}%</span>` + '<br />' + `<span>Vote A Rate: ${player.voteARate}%</span>` + '<br />' + `<span>Vote B Rate: ${player.voteBRate}%</span>` + '<br />' + `<span>Abstain Rate: ${player.abstainRate}%</span>`;
+    div.innerHTML = `<span>Player ${player.plyrId} Stats</span>` + '<br />' + '<br />' + `<span>Participation rate: ${player.participationRate}%</span>` + '<br />' + `<span>Vote A rate: ${player.voteARate}%</span>` + '<br />' + `<span>Vote B rate: ${player.voteBRate}%</span>` + '<br />' + `<span>Abstain rate: ${player.abstainRate}%</span>`;
     playerTesting.appendChild(div);
     let divHistory = document.createElement('div');
     divHistory.className = 'other-player-history';
@@ -36,7 +37,7 @@ function createFakePlayers() {
 
 createFakePlayers();
 
-/*
+//Testing area
 
 player1.roundStatus = '';
 
