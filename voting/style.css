@@ -335,6 +335,69 @@ input[type=checkbox] {
 input[type=checkbox]:checked {
   border-radius: 4px;
 }
+.anti-status {
+  margin: 0;
+  line-height: 37px;
+  width: 77px;
+}
+.switch {
+  --line: #fff;
+  --dot: #000;
+  --circle: #000;
+  --duration: 0.3s;
+  --text: #9ea0be;
+  cursor: pointer;
+  position: relative;
+}
+.switch:before {
+  content: "";
+  width: 90px;
+  height: 35px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.switch input {
+  display: none;
+}
+.switch input + div {
+  position: relative;
+}
+.switch input + div span {
+  padding-left: 92px;
+}
+.switch input + div span:before {
+  --x: 0;
+  --b: var(--circle);
+  --s: 1px;
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 29px;
+  height: 29px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 var(--s) var(--b);
+  transform: translateX(var(--x));
+  transition: transform var(--duration) ease;
+}
+.switch input + div span:not(:empty) {
+  padding-left: 68px;
+}
+.switch input:checked + div:before {
+  --s: 1;
+}
+.switch input:checked + div:after {
+  --s: 0;
+}
+.switch input:checked + div span:before {
+  --x: 55px;
+  --s: 16px;
+  --b: var(--dot);
+}
 #active-streak-accrual-rate-input,
 #active-streak-threshold-input,
 #vote-accrual-rate-input {

@@ -97,7 +97,7 @@ const updateStats = () => {
   bTallyDisplay.innerText = bTally;
   bTallyWeightDisplay.innerText = bTallyWeight;
   abstainTallyDisplay.innerText = abstainTally;
-}
+};
 
 const updateVotesAccrued = () => {
   if (activeStreak >= activeStreakThreshold) {
@@ -111,7 +111,7 @@ const updateVotesAccrued = () => {
   votesAvailable = totalVotesAccrued - totalVotesUsed;
   totalVotesAccruedDisplay.innerText = totalVotesAccrued;
   votesAvailableDisplay.innerText = votesAvailable;
-}
+};
 
 const updateMissedRound = () => {
   roundsMissed++;
@@ -119,7 +119,7 @@ const updateMissedRound = () => {
   activeStreak = 0;
   roundsMissedDisplay.innerText = roundsMissed;
   activeStreakDisplay.innerText = activeStreak;
-}
+};
 
 const updatePlayerRates = () => {
   myParticipationRate = `${Math.floor((roundsActive / currentRoundNumber) * 100)}%`;
@@ -130,7 +130,7 @@ const updatePlayerRates = () => {
   aVoteRateDisplay.innerText = aVoteRate;
   bVoteRateDisplay.innerText = bVoteRate;
   abstainVoteRateDisplay.innerText = abstainVoteRate;
-}
+};
 
 const updateHistory = () => {
   let history = document.querySelector('#history-area');
@@ -142,12 +142,12 @@ const updateHistory = () => {
   });
   history.prepend(...nodes);
   historyArea.scrollTo({top: 0, behavior: 'smooth'});
-}
+};
 
 const advanceRound = () => {
   currentRoundNumber++;
   currentRoundWeight = votesAvailable;
-}
+};
 
 const disableVoteButtons = () => {
   addButtonA.setAttribute('disabled', true);
@@ -166,7 +166,7 @@ const disableVoteButtons = () => {
     nextRoundButton.classList.add('next-round-float');
   }
   window.scrollTo({top: 595, behavior: 'smooth'});
-}
+};
 
 voteButtonA.addEventListener('click', () => {
   checkA();
@@ -310,7 +310,7 @@ const handleValueChangeA = value => {
   } else {
     subtractButtonB.setAttribute('disabled', true);
   }
-} 
+};
 
 const handleValueChangeB = value => {
   if (value <= 0) {
@@ -327,7 +327,7 @@ const handleValueChangeB = value => {
   } else {
     subtractButtonB.setAttribute('disabled', true);
   }
-} 
+};
 
 voteValueA.addEventListener('input', function(e) {
   if (this.value > votesAvailable) {

@@ -1,14 +1,29 @@
+let antiDictatorStatus = true;
 let newVoteAccrualRate = 0;
 let newActiveStreakThreshold = 0;
 let newActiveStreakAccrualRate = 0;
 
+const antiDictatorInput = document.getElementById('anti-dictator-input');
 const voteAccrualRateInput = document.getElementById('vote-accrual-rate-input');
 const activeStreakThresholdInput = document.getElementById('active-streak-threshold-input');
 const activeStreakAccrualRateInput = document.getElementById('active-streak-accrual-rate-input');
 
+const antiDictatorText = document.getElementById('anti-text');
 const rateSetButton = document.getElementById('rate-set-button');
 const thresholdSetButton = document.getElementById('threshold-set-button');
 const streakRateSetButton = document.getElementById('streak-rate-set-button');
+
+antiDictatorInput.addEventListener('change', (event) => {
+  if (event.currentTarget.checked) {
+    antiDictatorInput.setAttribute('checked', true);
+    antiDictatorStatus = true;
+    antiDictatorText.textContent = "On";
+  } else {
+    antiDictatorInput.removeAttribute('checked');
+    antiDictatorStatus = false;
+    antiDictatorText.textContent = "Off"
+  } 
+});
 
 voteAccrualRateInput.addEventListener('change', function(e) { 
   newVoteAccrualRate = e.target.value; 
