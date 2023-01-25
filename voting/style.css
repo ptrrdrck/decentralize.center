@@ -49,6 +49,8 @@ header,
 .option-right,
 .option-value,
 .options,
+.results,
+.results-sub2,
 .results-area,
 .rounds,
 .setting,
@@ -79,6 +81,7 @@ h1 {
   .option-card,
   .option-right,
   .results-area,
+  .results-sub2,
   .rounds,
   .setting,
   .settings,
@@ -106,6 +109,9 @@ h1 {
   .round-info {
     padding: 0 20px
   }
+  .results-sub2 {
+    gap: 0
+  }
 }
 @media (min-width:600px) {
   .accordion {
@@ -117,6 +123,7 @@ h1 {
   .rounds,
   .setting,
   .settings,
+  .results-sub2,
   .voting-area {
     flex-direction: row
   }
@@ -151,6 +158,12 @@ h1 {
     max-width: 300px;
     padding: 20px
   }
+  .results-area {
+    max-height: auto;
+  }
+  .results-sub2 {
+    gap: 20px
+  }
 }
 @media (min-width:1024px) {
   .option-card,
@@ -171,6 +184,9 @@ h1 {
   .round-info {
     max-width: none;
     padding: 20px
+  }
+  .results-area {
+    max-height: 252.5px;
   }
 }
 .rounds {
@@ -231,15 +247,20 @@ h1 {
 }
 .results-area {
   justify-content: flex-start;
-  align-items: center;
+  align-items: left;
   padding: 20px;
   height: 45%;
-  flex-grow: 1
+  flex-grow: 1;
+  gap: 20px
 }
 .results-label {
   font-weight: 500;
   padding-bottom: 10px;
   margin: 0
+}
+.results {
+  flex-direction: column;
+  gap: 10px
 }
 #stats-area {
   background-color: #eaeaea;
@@ -622,6 +643,7 @@ input[type=checkbox]:checked {
   padding: 20px;
   font: inherit;
   font-weight: 500;
+  color: #000;
   flex: 1;
   border: none;
   cursor: pointer;

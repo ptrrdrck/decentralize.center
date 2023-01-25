@@ -66,17 +66,25 @@
               </div>
             </div>
             <div class="results-area">
-              <p class="card-label">Results</p>
-              <p>Waiting for vote...</p>
-              <!--
-              <div class="game-stat">
-                <p>Votes for A: 43 (440)</p>
-                <p>Votes for B: 22 (380)</p>
-                <p>Abstained: 20</p>
-                <p>Missed round: 15</p>
-                <p>Overall participation rate: 85%</p>
+              <div>
+                <p class="card-label">Results</p>
               </div>
-              -->
+              <div class="results">
+                <div class="results-sub1">
+                  <p class="stat"><span id="round-result"></span></p>
+                  <p class="stat"><span id="percent-voted"></span></p>
+                </div>
+                <div class="results-sub2">
+                  <div class="results-sub2-sub">
+                    <p class="stat"><span id="players-voted-a"></span> <span id="players-total-a-votes"></span></p>
+                    <p class="stat"><span id="players-voted-b"></span> <span id="players-total-b-votes"></span></p>
+                  </div>
+                  <div class="results-sub2-sub">
+                    <p class="stat"><span id="players-total-abstained"></span></p>
+                    <p class="stat"><span id="players-total-missed"></span></p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <section class="accordion">
@@ -114,15 +122,15 @@
                   <div class="setting">
                     <p class="setting-name">Players</p>
                     <div class="option-value">
-                      <input id="vote-accrual-rate-input" type="number" placeholder="100">
-                      <button class="button" id="rate-set-button" onclick="setVoteAccrualRate()">Set</button>
+                      <input id="total-players-input" type="number" placeholder="100">
+                      <button class="button" id="players-set-button" onclick="setVoteAccrualRate()">Set</button>
                     </div>  
                   </div>
                   <div class="setting">
                     <p class="setting-name">Quota</p>
                     <div class="option-value">
-                      <input id="vote-accrual-rate-input" type="number" placeholder="60%">
-                      <button class="button" id="rate-set-button" onclick="setVoteAccrualRate()">Set</button>
+                      <input id="quota-input" type="number" placeholder="51%">
+                      <button class="button" id="quota-set-button" onclick="setVoteAccrualRate()">Set</button>
                     </div>  
                   </div>
                   <div class="setting">
@@ -171,6 +179,5 @@
     <script src="./script.js"></script>
     <script src="./vote.js"></script>
     <script src="./settings.js"></script>
-    <!--<script src="./players.js"></script>-->
   </body>
 </html>

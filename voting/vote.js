@@ -9,11 +9,11 @@ let votedA = false;
 let votedB = false;
 let abstained = false;
 let roundStatus = '';
-let aTally = 0;
-let aTallyWeight = 0;
-let bTally = 0;
-let bTallyWeight = 0;
-let abstainTally = 0;
+let myATally = 0;
+let myATallyWeight = 0;
+let myBTally = 0;
+let myBTallyWeight = 0;
+let myAbstainTally = 0;
 let voteAccrualRate = 10;
 let votesAccrued = voteAccrualRate;
 let totalVotesAccrued = voteAccrualRate;
@@ -27,21 +27,21 @@ let activeStreakAccrualRate = 20;
 let roundsMissed = 0;
 let currentRoundWeight = votesAvailable;
 let myParticipationRate;
-let aVoteRate;
-let bVoteRate;
-let abstainVoteRate;
+let myAVoteRate;
+let myBVoteRate;
+let myAbstainVoteRate;
 
 const voteValueA = document.getElementById('vote-value-a');
 const voteValueB = document.getElementById('vote-value-b');
 
-const aTallyDisplay = document.getElementById('vote-tally-a');
-const aTallyWeightDisplay = document.getElementById('total-a-votes');
-const bTallyDisplay = document.getElementById('vote-tally-b');
-const bTallyWeightDisplay = document.getElementById('total-b-votes');
-const abstainTallyDisplay = document.getElementById('abstain-tally');
-const aVoteRateDisplay = document.getElementById('a-vote-rate');
-const bVoteRateDisplay = document.getElementById('b-vote-rate');
-const abstainVoteRateDisplay = document.getElementById('abstain-vote-rate');
+const myATallyDisplay = document.getElementById('vote-tally-a');
+const myATallyWeightDisplay = document.getElementById('total-a-votes');
+const myBTallyDisplay = document.getElementById('vote-tally-b');
+const myBTallyWeightDisplay = document.getElementById('total-b-votes');
+const myAbstainTallyDisplay = document.getElementById('abstain-tally');
+const myAVoteRateDisplay = document.getElementById('a-vote-rate');
+const myBVoteRateDisplay = document.getElementById('b-vote-rate');
+const myAbstainVoteRateDisplay = document.getElementById('abstain-vote-rate');
 const roundNumberDisplay = document.getElementById('round-number');
 const totalVotesAccruedDisplay = document.getElementById('votes-accrued');
 const totalVotesUsedDisplay = document.getElementById('total-votes-used');
@@ -50,7 +50,7 @@ const roundWeightDisplay = document.getElementById('round-weight');
 const roundsMissedDisplay = document.getElementById('rounds-missed');
 const roundsActiveDisplay = document.getElementById('rounds-active');
 const activeStreakDisplay = document.getElementById('active-streak');
-const participationRateDisplay = document.getElementById('participation-rate');
+const myParticipationRateDisplay = document.getElementById('participation-rate');
 
 const voteButtonA = document.getElementById('vote-button-a');
 const voteButtonB = document.getElementById('vote-button-b');
@@ -70,21 +70,21 @@ const updateStats = () => {
   activeStreak++;
   if (votedA == true) {
     roundStatus = 'Voted A';
-    aTally++;
-    aTallyWeight = parseFloat(aTallyWeight) + parseFloat(currentVoteValueA);
+    myATally++;
+    myATallyWeight = parseFloat(myATallyWeight) + parseFloat(currentVoteValueA);
     votesUsed = currentVoteValueA;
     votesAvailable = votesAvailable - currentVoteValueA;
     totalVotesUsed = totalVotesAccrued - votesAvailable;
   } else if (votedB == true) {
     roundStatus = 'Voted B';
-    bTally++;
-    bTallyWeight = parseFloat(bTallyWeight) + parseFloat(currentVoteValueB);
+    myBTally++;
+    myBTallyWeight = parseFloat(myBTallyWeight) + parseFloat(currentVoteValueB);
     votesUsed = currentVoteValueB;
     votesAvailable = votesAvailable - currentVoteValueB;
     totalVotesUsed = totalVotesAccrued - votesAvailable;
   } else if (abstained == true) {
     roundStatus = 'Abstained';
-    abstainTally++;
+    myAbstainTally++;
     votesUsed = 0;
     votesAvailable;
     totalVotesUsed;
@@ -92,11 +92,11 @@ const updateStats = () => {
   totalVotesUsedDisplay.innerText = totalVotesUsed;
   roundsActiveDisplay.innerText = roundsActive;
   activeStreakDisplay.innerText = activeStreak;
-  aTallyDisplay.innerText = aTally;
-  aTallyWeightDisplay.innerText = aTallyWeight;
-  bTallyDisplay.innerText = bTally;
-  bTallyWeightDisplay.innerText = bTallyWeight;
-  abstainTallyDisplay.innerText = abstainTally;
+  myATallyDisplay.innerText = myATally;
+  myATallyWeightDisplay.innerText = myATallyWeight;
+  myBTallyDisplay.innerText = myBTally;
+  myBTallyWeightDisplay.innerText = myBTallyWeight;
+  myAbstainTallyDisplay.innerText = myAbstainTally;
 };
 
 const updateVotesAccrued = () => {
@@ -123,13 +123,13 @@ const updateMissedRound = () => {
 
 const updatePlayerRates = () => {
   myParticipationRate = `${Math.floor((roundsActive / currentRoundNumber) * 100)}%`;
-  aVoteRate = `${Math.floor((aTally / currentRoundNumber) * 100)}%`;
-  bVoteRate = `${Math.floor((bTally / currentRoundNumber) * 100)}%`;
-  abstainVoteRate = `${Math.floor((abstainTally / currentRoundNumber) * 100)}%`;
-  participationRateDisplay.innerText = myParticipationRate;
-  aVoteRateDisplay.innerText = aVoteRate;
-  bVoteRateDisplay.innerText = bVoteRate;
-  abstainVoteRateDisplay.innerText = abstainVoteRate;
+  myAVoteRate = `${Math.floor((myATally / currentRoundNumber) * 100)}%`;
+  myBVoteRate = `${Math.floor((myBTally / currentRoundNumber) * 100)}%`;
+  myAbstainVoteRate = `${Math.floor((myAbstainTally / currentRoundNumber) * 100)}%`;
+  myParticipationRateDisplay.innerText = myParticipationRate;
+  myAVoteRateDisplay.innerText = myAVoteRate;
+  myBVoteRateDisplay.innerText = myBVoteRate;
+  myAbstainVoteRateDisplay.innerText = myAbstainVoteRate;
 };
 
 const updateHistory = () => {
@@ -168,6 +168,95 @@ const disableVoteButtons = () => {
   window.scrollTo({top: 595, behavior: 'smooth'});
 };
 
+/**
+    Other players
+**/
+let players = 99;
+let quota = .51;
+let totalPlayerVotes = (players + 1) * voteAccrualRate;
+let quotaVotes = totalPlayerVotes * quota;
+let roundResult = '';
+
+const percentVotedDisplay = document.getElementById('percent-voted');
+const playersVotedADisplay = document.getElementById('players-voted-a');
+const playersAVotesDisplay = document.getElementById('players-total-a-votes');
+const playersVotedBDisplay = document.getElementById('players-voted-b');
+const playersBVotesDisplay = document.getElementById('players-total-b-votes');
+const playersAbstainedDisplay = document.getElementById('players-total-abstained');
+const playersMissedDisplay = document.getElementById('players-total-missed');
+const roundResultDisplay = document.getElementById('round-result');
+
+roundResultDisplay.innerText = 'Waiting for vote...';
+
+function playersResults() {
+  let randParticipationRate = Math.floor(Math.random() * 100);
+  if (randParticipationRate < 60) {
+    randParticipationRate = randParticipationRate + 40;
+  }
+  let rand1 = Math.floor(Math.random() * 100);
+  let rand2 = Math.floor(Math.random() * 100);
+  let rand3 = Math.floor(Math.random() * 100);
+  let randFactor = 100 / (rand1 + rand2 + rand3);
+  let randVoteARate = Math.floor(rand1 * randFactor);
+  let randVoteBRate = Math.floor(rand2 * randFactor);
+  let randAbstainRate = 100 - (randVoteARate + randVoteBRate);
+
+  let totalRoundVoters = Math.round(players * (randParticipationRate / 100));
+  let totalRoundMissers = players - totalRoundVoters;
+  let totalAVoters = Math.round((totalRoundVoters * randVoteARate) / 100);
+  let totalBVoters = Math.round((totalRoundVoters * randVoteBRate) / 100);
+  let totalAbstainVoters = Math.round((totalRoundVoters * randAbstainRate) / 100);
+
+  let totalAVotes = (totalAVoters * voteAccrualRate) + currentVoteValueA;
+  let totalBVotes = (totalBVoters * voteAccrualRate) + currentVoteValueB;
+
+  if (roundStatus == 'Voted A') {
+    totalAVoters = totalAVoters + 1;
+    totalRoundVoters = totalRoundVoters + 1;
+  } else if (roundStatus == 'Voted B') {
+    totalBVoters = totalBVoters + 1;
+    totalRoundVoters = totalRoundVoters + 1;
+  } else if (roundStatus == 'Abstained') {
+    totalAbstainVoters = totalAbstainVoters + 1;
+    totalRoundVoters = totalRoundVoters + 1;
+  } else if (roundStatus == 'Missed') {
+    totalRoundMissers = totalRoundMissers + 1;
+  }
+
+  if ((randParticipationRate + totalRoundMissers) < 100) {
+    totalRoundMissers = totalRoundMissers + (100 - (randParticipationRate + totalRoundMissers));
+  } else if ((randParticipationRate + totalRoundMissers) > 100) {
+    totalRoundMissers = totalRoundMissers - ((randParticipationRate + totalRoundMissers) - 100);
+  }
+
+  if ((totalAVoters + totalBVoters + totalAbstainVoters) < randParticipationRate) {
+    totalAbstainVoters = totalAbstainVoters + (randParticipationRate - (totalAVoters + totalBVoters + totalAbstainVoters));
+  } else if ((totalAVoters + totalBVoters + totalAbstainVoters) > randParticipationRate) {
+    totalAbstainVoters = totalAbstainVoters - ((totalAVoters + totalBVoters + totalAbstainVoters) - randParticipationRate);
+  }
+
+  percentVotedDisplay.innerText = `Percent Active: ${randParticipationRate}%`;
+  playersVotedADisplay.innerText = `Voted A: ${totalAVoters}`;
+  playersAVotesDisplay.innerText = `(${totalAVotes})`;
+  playersVotedBDisplay.innerText = `Voted B: ${totalBVoters}`;
+  playersBVotesDisplay.innerText = `(${totalBVotes})`;
+  playersAbstainedDisplay.innerText = `Abstained: ${totalAbstainVoters}`;
+  playersMissedDisplay.innerText = `Missed: ${totalRoundMissers}`;
+
+  if (totalAVotes >= quotaVotes) {
+    roundResult = 'A vote successful.';
+  } else if (totalBVotes >= quotaVotes) {
+    roundResult = 'B vote successful.';
+  } else if (totalAVotes < quotaVotes && totalBVotes < quotaVotes) {
+    roundResult = 'Vote failed. Quota not met.';
+  }
+
+  roundResultDisplay.innerText = roundResult;
+};
+/** 
+    END Other players
+**/
+
 voteButtonA.addEventListener('click', () => {
   checkA();
 });
@@ -177,6 +266,7 @@ const castVoteA = () => {
   votedA = true;
   disableVoteButtons();
   updateStats();
+  playersResults();
   updateVotesAccrued();
   updatePlayerRates();
   updateHistory();
@@ -191,6 +281,7 @@ const castVoteB = () => {
   votedB = true;
   disableVoteButtons();
   updateStats();
+  playersResults();
   updateVotesAccrued();
   updatePlayerRates();
   updateHistory();
@@ -204,6 +295,7 @@ const castVoteAbstain = () => {
   abstained = true;
   disableVoteButtons();
   updateStats();
+  playersResults();
   updateVotesAccrued();
   updatePlayerRates();
   updateHistory();
@@ -221,6 +313,7 @@ const goToNextRound = () => {
   // Handle missed round
   if (votedA == false && votedB == false && abstained == false) {
     updateMissedRound();
+    playersResults();
     updatePlayerRates();
     updateHistory();
     advanceRound();
@@ -256,7 +349,18 @@ const goToNextRound = () => {
   votesAccrued = 0;
   votesUsed = 0;
   roundStatus = '';
+  currentVoteValueA = 0;
+  currentVoteValueB = 0;
   window.scrollTo({top: 96, behavior: 'smooth'});
+  // Reset round results
+  percentVotedDisplay.innerText = '';
+  playersVotedADisplay.innerText = '';
+  playersAVotesDisplay.innerText = '';
+  playersVotedBDisplay.innerText = '';
+  playersBVotesDisplay.innerText = '';
+  playersAbstainedDisplay.innerText = '';
+  playersMissedDisplay.innerText = '';
+  roundResultDisplay.innerText = 'Waiting for vote...';
 };
 
 addButtonA.addEventListener('click', () => {

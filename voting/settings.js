@@ -31,6 +31,8 @@ voteAccrualRateInput.addEventListener('change', function(e) {
 
 const setVoteAccrualRate = () => {
   voteAccrualRate = newVoteAccrualRate;
+  totalPlayerVotes = (players + 1) * voteAccrualRate;
+  quotaVotes = totalPlayerVotes * quota;
   rateSetButton.setAttribute('onclick', 'resetVoteAccrualRate()');
   rateSetButton.textContent = 'Reset';
 }
