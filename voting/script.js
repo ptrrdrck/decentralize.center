@@ -1,12 +1,11 @@
-/* 
-Button click confirmations
-*/
+/* © 2023 Peter Rodrick <pete@lftlc.xyz> */
+
 const ui = {
-  confirm: async (message) => createConfirm(message)
+  confirm: async (message) => createConfirm(message),
 };
 
-const createConfirm = (message) => {
-  return new Promise((complete, failed) => {
+function createConfirm(message) {
+  return new Promise((resolve, reject) => {
     $("#confirm-message").text(message);
 
     $("#confirm-yes").off("click");
@@ -14,92 +13,73 @@ const createConfirm = (message) => {
 
     $("#confirm-yes").on("click", () => {
       $(".confirm").hide();
-      complete(true);
+      resolve(true);
     });
     $("#confirm-no").on("click", () => {
       $(".confirm").hide();
-      complete(false);
+      resolve(false);
     });
 
     $(".confirm").show();
   });
-};
+}
 
-const checkA = async () => {
-  const confirm = await ui.confirm("Are you sure you want to vote for A?");
+async function checkVote(confirmMessage, voteFunction) {
+  const confirm = await ui.confirm(confirmMessage);
   if (confirm) {
-    castVoteA();
+    voteFunction();
   }
+}
+
+const checkA = () => {
+  checkVote("Are you sure you want to vote for A?", castVoteA);
 };
 
-const checkB = async () => {
-  const confirm = await ui.confirm("Are you sure you want to vote for B?");
-  if (confirm) {
-    castVoteB();
-  }
+const checkB = () => {
+  checkVote("Are you sure you want to vote for B?", castVoteB);
 };
 
-const checkAbstain = async () => {
-  const confirm = await ui.confirm("Are you sure you want to abstain?");
-  if (confirm) {
-    castVoteAbstain();
-  }
+const checkAbstain = () => {
+  checkVote("Are you sure you want to abstain?", castVoteAbstain);
 };
 
-const checkNextRound = async () => {
-  const confirm = await ui.confirm("Are you sure you want to miss this round?");
-  if (confirm) {
-    goToNextRound();
-  }
+const checkNextRound = () => {
+  checkVote("Are you sure you want to miss this round?", goToNextRound);
 };
 
-/* 
-Content tabbing
-*/
 const labels = document.querySelectorAll(".accordion-item__label");
 const tabs = document.querySelectorAll(".accordion-tab");
 
 function toggleShow() {
-	const target = this;
-	const item = target.classList.contains("accordion-tab")
-		? target
-		: target.parentElement;
-	const group = item.dataset.actabGroup;
-	const id = item.dataset.actabId;
+  const target = this;
+  const item = target.classList.contains("accordion-tab")
+    ? target
+    : target.parentElement;
+  const group = item.dataset.actabGroup;
+  const id = item.dataset.actabId;
 
-	tabs.forEach(function (tab) {
-		if (tab.dataset.actabGroup === group) {
-			if (tab.dataset.actabId === id) {
-				tab.classList.add("accordion-active");
-			} else {
-				tab.classList.remove("accordion-active");
-			}
-		}
-	});
+  tabs.forEach(function (tab) {
+    if (tab.dataset.actabGroup === group) {
+      tab.classList.toggle("accordion-active", tab.dataset.actabId === id);
+    }
+  });
 
-	labels.forEach(function (label) {
-		const tabItem = label.parentElement;
+  labels.forEach(function (label) {
+    const tabItem = label.parentElement;
 
-		if (tabItem.dataset.actabGroup === group) {
-			if (tabItem.dataset.actabId === id) {
-				tabItem.classList.add("accordion-active");
-			} else {
-				tabItem.classList.remove("accordion-active");
-			}
-		}
-	});
+    if (tabItem.dataset.actabGroup === group) {
+      tabItem.classList.toggle(
+        "accordion-active",
+        tabItem.dataset.actabId === id
+      );
+    }
+  });
 }
 
 labels.forEach(function (label) {
-	label.addEventListener("click", toggleShow);
+  label.addEventListener("click", toggleShow);
 });
 
 tabs.forEach(function (tab) {
-	tab.addEventListener("click", toggleShow);
+  tab.addEventListener("click", toggleShow);
 });
-
-/*
-const getAbsoluteDistance = (a, b) => {
-  return Math.abs(a - b);
-}
-*/

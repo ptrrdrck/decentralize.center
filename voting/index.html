@@ -1,11 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Participation-Weighted Voting</title>
-    <link rel="stylesheet" href="./style.css">
-    <link href="https://api.fontshare.com/v2/css?f[]=tabular@600,701,1,700,301,500,400,501,601,401,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=tabular@600,701,1,700,301,500,400,501,601,401,300&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   </head>
   <body>
@@ -14,8 +17,8 @@
       <div>
         <div id="confirm-message">Confirm text</div>
         <div class="confirm-choices">
-        <button id="confirm-yes">Yes</button>
-        <button id="confirm-no">No</button>
+          <button id="confirm-yes">Yes</button>
+          <button id="confirm-no">No</button>
         </div>
       </div>
     </div>
@@ -25,8 +28,13 @@
       </header>
       <div class="app-area">
         <div class="rounds">
-          <p class="round-name">Player 1, Round <span id="round-number">1</span></p>
-          <p class="round-info">You can use up to <span id="round-weight">10</span> votes this round.</p>
+          <p class="round-name">
+            Player 1, Round <span id="round-number">1</span>
+          </p>
+          <p class="round-info">
+            You can use up to <span id="round-weight">10</span> votes this
+            round.
+          </p>
           <button class="button next-round" id="next-round">Next Round</button>
         </div>
         <div class="voting-area">
@@ -38,31 +46,51 @@
                   <p class="card-label">Option A</p>
                   <div class="option-right">
                     <div class="option-value">
-                      <input type="number" id="vote-value-a" value=0>
+                      <input type="number" id="vote-value-a" value="0" />
                       <div class="number-controls">
-                        <button class="number-control left" id="subtract-a" disabled>-</button>
-                        <button class="number-control right" id="add-a">+</button>
+                        <button
+                          class="number-control left"
+                          id="subtract-a"
+                          disabled
+                        >
+                          -
+                        </button>
+                        <button class="number-control right" id="add-a">
+                          +
+                        </button>
                       </div>
                       <button class="button" id="max-a">Max</button>
-                    </div>  
-                    <button class="button" id="vote-button-a" disabled>Vote A</button>
+                    </div>
+                    <button class="button" id="vote-button-a" disabled>
+                      Vote A
+                    </button>
                   </div>
                 </div>
                 <div class="option-card">
                   <p class="card-label">Option B</p>
                   <div class="option-right">
                     <div class="option-value">
-                      <input type="number" id="vote-value-b" value=0>
+                      <input type="number" id="vote-value-b" value="0" />
                       <div class="number-controls">
-                        <button class="number-control left" id="subtract-b" disabled>-</button>
-                        <button class="number-control right" id="add-b">+</button>
+                        <button
+                          class="number-control left"
+                          id="subtract-b"
+                          disabled
+                        >
+                          -
+                        </button>
+                        <button class="number-control right" id="add-b">
+                          +
+                        </button>
                       </div>
                       <button class="button" id="max-b">Max</button>
-                    </div>  
-                    <button class="button" id="vote-button-b" disabled>Vote B</button>
-                  </div>  
+                    </div>
+                    <button class="button" id="vote-button-b" disabled>
+                      Vote B
+                    </button>
+                  </div>
                 </div>
-              <button class="button" id="abstain">Abstain</button>  
+                <button class="button" id="abstain">Abstain</button>
               </div>
             </div>
             <div class="results-area">
@@ -76,11 +104,19 @@
                 </div>
                 <div class="results-sub2">
                   <div class="results-sub2-sub">
-                    <p class="stat"><span id="players-voted-a"></span> <span id="players-total-a-votes"></span></p>
-                    <p class="stat"><span id="players-voted-b"></span> <span id="players-total-b-votes"></span></p>
+                    <p class="stat">
+                      <span id="players-voted-a"></span>
+                      <span id="players-total-a-votes"></span>
+                    </p>
+                    <p class="stat">
+                      <span id="players-voted-b"></span>
+                      <span id="players-total-b-votes"></span>
+                    </p>
                   </div>
                   <div class="results-sub2-sub">
-                    <p class="stat"><span id="players-total-abstained"></span></p>
+                    <p class="stat">
+                      <span id="players-total-abstained"></span>
+                    </p>
                     <p class="stat"><span id="players-total-missed"></span></p>
                   </div>
                 </div>
@@ -89,91 +125,206 @@
           </div>
           <section class="accordion">
             <section class="accordion-tabs">
-              <button class="accordion-tab accordion-active" data-actab-group="0" data-actab-id="0">Stats</button>
-              <button class="accordion-tab" data-actab-group="0" data-actab-id="1">History</button>
-              <button class="accordion-tab" data-actab-group="0" data-actab-id="2">Settings</button>
+              <button
+                class="accordion-tab accordion-active"
+                data-actab-group="0"
+                data-actab-id="0"
+              >
+                Stats
+              </button>
+              <button
+                class="accordion-tab"
+                data-actab-group="0"
+                data-actab-id="1"
+              >
+                History
+              </button>
+              <button
+                class="accordion-tab"
+                data-actab-group="0"
+                data-actab-id="2"
+              >
+                Settings
+              </button>
             </section>
             <section class="accordion-content">
-              <div class="accordion-item accordion-active" data-actab-group="0" data-actab-id="0">
+              <div
+                class="accordion-item accordion-active"
+                data-actab-group="0"
+                data-actab-id="0"
+              >
                 <p class="accordion-item__label">Player 1</p>
                 <div id="stats-area" class="accordion-item__container">
-                  <p class="stat">Participation rate: <span id="participation-rate">0%</span></p>
-                  <p class="stat">Votes available: <span id="votes-available">10</span></p>
-                  <p class="stat">Votes accrued: <span id="votes-accrued">10</span></p>
-                  <p class="stat">Votes used: <span id="total-votes-used">0</span></p>
-                  <p class="stat">Rounds active: <span id="rounds-active">0</span></p>
-                  <p class="stat">Rounds missed: <span id="rounds-missed">0</span></p>
-                  <p class="stat">Active streak: <span id="active-streak">0</span></p>
-                  <p class="stat">Voted for A: <span id="vote-tally-a">0</span>&nbsp;(<span id="total-a-votes">0</span>)&nbsp;(<span id="a-vote-rate">0%</span>)</p>
-                  <p class="stat">Voted for B: <span id="vote-tally-b">0</span>&nbsp;(<span id="total-b-votes">0</span>)&nbsp;(<span id="b-vote-rate">0%</span>)</p>
-                  <p class="stat">Abstained: <span id="abstain-tally">0</span>&nbsp;(<span id="abstain-vote-rate">0%</span>)</p>
+                  <p class="stat">
+                    Participation rate: <span id="participation-rate">0%</span>
+                  </p>
+                  <p class="stat">
+                    Votes available: <span id="votes-available">10</span>
+                  </p>
+                  <p class="stat">
+                    Votes accrued: <span id="votes-accrued">10</span>
+                  </p>
+                  <p class="stat">
+                    Votes used: <span id="total-votes-used">0</span>
+                  </p>
+                  <p class="stat">
+                    Rounds active: <span id="rounds-active">0</span>
+                  </p>
+                  <p class="stat">
+                    Rounds missed: <span id="rounds-missed">0</span>
+                  </p>
+                  <p class="stat">
+                    Active streak: <span id="active-streak">0</span>
+                  </p>
+                  <p class="stat">
+                    Voted for A: <span id="vote-tally-a">0</span>&nbsp;(<span
+                      id="total-a-votes"
+                      >0</span
+                    >)&nbsp;(<span id="a-vote-rate">0%</span>)
+                  </p>
+                  <p class="stat">
+                    Voted for B: <span id="vote-tally-b">0</span>&nbsp;(<span
+                      id="total-b-votes"
+                      >0</span
+                    >)&nbsp;(<span id="b-vote-rate">0%</span>)
+                  </p>
+                  <p class="stat">
+                    Abstained: <span id="abstain-tally">0</span>&nbsp;(<span
+                      id="abstain-vote-rate"
+                      >0%</span
+                    >)
+                  </p>
                 </div>
               </div>
-              <div class="accordion-item" data-actab-group="0" data-actab-id="1">
+              <div
+                class="accordion-item"
+                data-actab-group="0"
+                data-actab-id="1"
+              >
                 <p class="accordion-item__label">Player 1</p>
                 <div id="history-area" class="accordion-item__container">
                   <p>New voter</p>
                   <p>10 votes were accrued.</p>
                 </div>
               </div>
-              <div class="accordion-item" data-actab-group="0" data-actab-id="2">
+              <div
+                class="accordion-item"
+                data-actab-group="0"
+                data-actab-id="2"
+              >
                 <p class="accordion-item__label">Global</p>
                 <div id="settings-area" class="accordion-item__container">
                   <div class="setting">
                     <p class="setting-name">Players</p>
                     <div class="option-value">
-                      <input id="total-players-input" type="number" placeholder="100">
-                      <button class="button" id="players-set-button" onclick="setVoteAccrualRate()">Set</button>
-                    </div>  
+                      <input
+                        id="total-players-input"
+                        type="number"
+                        placeholder="100"
+                      />
+                      <button
+                        class="button"
+                        id="players-set-button"
+                        onclick="setVoteAccrualRate()"
+                      >
+                        Set
+                      </button>
+                    </div>
                   </div>
                   <div class="setting">
                     <p class="setting-name">Quota</p>
                     <div class="option-value">
-                      <input id="quota-input" type="number" placeholder="51%">
-                      <button class="button" id="quota-set-button" onclick="setVoteAccrualRate()">Set</button>
-                    </div>  
+                      <input id="quota-input" type="number" placeholder="51%" />
+                      <button
+                        class="button"
+                        id="quota-set-button"
+                        onclick="setVoteAccrualRate()"
+                      >
+                        Set
+                      </button>
+                    </div>
                   </div>
                   <div class="setting">
                     <p class="setting-name">Anti-dictator + Anti-veto</p>
                     <div class="option-value">
                       <label class="switch" for="anti-dictator-input">
-                        <input id="anti-dictator-input" type="checkbox" checked>
+                        <input
+                          id="anti-dictator-input"
+                          type="checkbox"
+                          checked
+                        />
                         <div>
                           <span></span>
                         </div>
                       </label>
-                      <p id="anti-text" class="anti-status">On</p> 
-                    </div>  
+                      <p id="anti-text" class="anti-status">On</p>
+                    </div>
                   </div>
                   <div class="setting">
                     <p class="setting-name">Vote Accrual Rate</p>
                     <div class="option-value">
-                      <input id="vote-accrual-rate-input" type="number" placeholder="10">
-                      <button class="button" id="rate-set-button" onclick="setVoteAccrualRate()">Set</button>
-                    </div>  
+                      <input
+                        id="vote-accrual-rate-input"
+                        type="number"
+                        placeholder="10"
+                      />
+                      <button
+                        class="button"
+                        id="rate-set-button"
+                        onclick="newVoteAccrualRate.setRate()"
+                      >
+                        Set
+                      </button>
+                    </div>
                   </div>
                   <div class="setting">
-                    <p class="setting-name">Active Streak Vote Accrual Rate Threshold (Rounds)</p>
+                    <p class="setting-name">
+                      Active Streak Vote Accrual Rate Threshold (Rounds)
+                    </p>
                     <div class="option-value">
-                      <input id="active-streak-threshold-input" type="number" placeholder="10">
-                      <button class="button" id="threshold-set-button" onclick="setActiveStreakThreshold()">Set</button>
-                    </div>  
+                      <input
+                        id="active-streak-threshold-input"
+                        type="number"
+                        placeholder="10"
+                      />
+                      <button
+                        class="button"
+                        id="threshold-set-button"
+                        onclick="newActiveStreakThreshold.setThreshold()"
+                      >
+                        Set
+                      </button>
+                    </div>
                   </div>
                   <div class="setting">
                     <p class="setting-name">Active Streak Vote Accrual Rate</p>
                     <div class="option-value">
-                      <input id="active-streak-accrual-rate-input" type="number" placeholder="20">
-                      <button class="button" id="streak-rate-set-button" onclick="setActiveStreakAccrualRate()">Set</button>
-                    </div>  
+                      <input
+                        id="active-streak-accrual-rate-input"
+                        type="number"
+                        placeholder="20"
+                      />
+                      <button
+                        class="button"
+                        id="streak-rate-set-button"
+                        onclick="newActiveStreakAccrualRate.setRate()"
+                      >
+                        Set
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>  
+              </div>
             </section>
           </section>
         </div>
       </div>
       <footer>
-        <p class="footer-info">Made by <a href="https://trepe.xyz" target="_blank" id="footer-link">trepe</a>. <span id="copyright">&copy;</span>2023</p>
+        <p class="footer-info">
+          Made by
+          <a href="https://trepe.xyz" target="_blank" id="footer-link">trepe</a
+          >. <span id="copyright">&copy;</span>2023
+        </p>
       </footer>
     </div>
     <script src="./script.js"></script>

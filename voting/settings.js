@@ -1,79 +1,103 @@
-let antiDictatorStatus = true;
-let newVoteAccrualRate = 0;
-let newActiveStreakThreshold = 0;
-let newActiveStreakAccrualRate = 0;
+/* © 2023 Peter Rodrick <pete@lftlc.xyz> */
 
-const antiDictatorInput = document.getElementById('anti-dictator-input');
-const voteAccrualRateInput = document.getElementById('vote-accrual-rate-input');
-const activeStreakThresholdInput = document.getElementById('active-streak-threshold-input');
-const activeStreakAccrualRateInput = document.getElementById('active-streak-accrual-rate-input');
+const antiDictatorStatus = {
+  value: true,
+  input: document.getElementById("anti-dictator-input"),
+  text: document.getElementById("anti-text"),
+  updateStatus: function () {
+    if (this.input.checked) {
+      this.value = true;
+      this.text.textContent = "On";
+    } else {
+      this.value = false;
+      this.text.textContent = "Off";
+    }
+  },
+};
 
-const antiDictatorText = document.getElementById('anti-text');
-const rateSetButton = document.getElementById('rate-set-button');
-const thresholdSetButton = document.getElementById('threshold-set-button');
-const streakRateSetButton = document.getElementById('streak-rate-set-button');
+const newVoteAccrualRate = {
+  value: 0,
+  input: document.getElementById("vote-accrual-rate-input"),
+  button: document.getElementById("rate-set-button"),
+  setRate: function () {
+    currentRound.voteAccrualRate = this.value;
+    players.totalPlayerVotes = (players + 1) * currentRound.voteAccrualRate;
+    players.quotaVotes = players.totalPlayerVotes * players.quota;
+    newVoteAccrualRate.button.setAttribute(
+      "onclick",
+      "newVoteAccrualRate.resetRate()"
+    );
+    newVoteAccrualRate.button.textContent = "Reset";
+  },
+  resetRate: function () {
+    currentRound.voteAccrualRate = 10;
+    newVoteAccrualRate.button.setAttribute(
+      "onclick",
+      "newVoteAccrualRate.setRate()"
+    );
+    newVoteAccrualRate.button.textContent = "Set";
+    this.input.value = 10;
+  },
+};
 
-antiDictatorInput.addEventListener('change', (event) => {
-  if (event.currentTarget.checked) {
-    antiDictatorInput.setAttribute('checked', true);
-    antiDictatorStatus = true;
-    antiDictatorText.textContent = "On";
-  } else {
-    antiDictatorInput.removeAttribute('checked');
-    antiDictatorStatus = false;
-    antiDictatorText.textContent = "Off"
-  } 
+const newActiveStreakThreshold = {
+  value: 0,
+  input: document.getElementById("active-streak-threshold-input"),
+  button: document.getElementById("threshold-set-button"),
+  setThreshold: function () {
+    currentRound.activeStreakThreshold = this.value;
+    newActiveStreakThreshold.button.setAttribute(
+      "onclick",
+      "newActiveStreakThreshold.resetThreshold()"
+    );
+    newActiveStreakThreshold.button.textContent = "Reset";
+  },
+  resetThreshold: function () {
+    currentRound.activeStreakThreshold = 10;
+    newActiveStreakThreshold.button.setAttribute(
+      "onclick",
+      "newActiveStreakThreshold.setThreshold()"
+    );
+    newActiveStreakThreshold.button.textContent = "Set";
+    this.input.value = 10;
+  },
+};
+
+const newActiveStreakAccrualRate = {
+  value: 0,
+  input: document.getElementById("active-streak-accrual-rate-input"),
+  button: document.getElementById("streak-rate-set-button"),
+  setRate: function () {
+    currentRound.activeStreakAccrualRate = this.value;
+    newActiveStreakAccrualRate.button.setAttribute(
+      "onclick",
+      "newActiveStreakAccrualRate.resetRate()"
+    );
+    newActiveStreakAccrualRate.button.textContent = "Reset";
+  },
+  resetRate: function () {
+    currentRound.activeStreakAccrualRate = 20;
+    newActiveStreakAccrualRate.button.setAttribute(
+      "onclick",
+      "newActiveStreakAccrualRate.setRate()"
+    );
+    newActiveStreakAccrualRate.button.textContent = "Set";
+    this.input.value = 20;
+  },
+};
+
+antiDictatorStatus.input.addEventListener("change", () => {
+  antiDictatorStatus.updateStatus();
 });
 
-voteAccrualRateInput.addEventListener('change', function(e) { 
-  newVoteAccrualRate = e.target.value; 
+newVoteAccrualRate.input.addEventListener("change", (e) => {
+  newVoteAccrualRate.value = e.target.value;
 });
 
-const setVoteAccrualRate = () => {
-  voteAccrualRate = newVoteAccrualRate;
-  totalPlayerVotes = (players + 1) * voteAccrualRate;
-  quotaVotes = totalPlayerVotes * quota;
-  rateSetButton.setAttribute('onclick', 'resetVoteAccrualRate()');
-  rateSetButton.textContent = 'Reset';
-}
-
-const resetVoteAccrualRate = () => {
-  voteAccrualRate = 10;
-  rateSetButton.setAttribute('onclick', 'setVoteAccrualRate()');
-  rateSetButton.textContent = 'Set';
-  voteAccrualRateInput.value = 10;
-}
-
-activeStreakThresholdInput.addEventListener('change', function(e) { 
-  newActiveStreakThreshold = e.target.value; 
+newActiveStreakThreshold.input.addEventListener("change", (e) => {
+  newActiveStreakThreshold.value = e.target.value;
 });
 
-const setActiveStreakThreshold = () => {
-  activeStreakThreshold = newActiveStreakThreshold;
-  thresholdSetButton.setAttribute('onclick', 'resetActiveStreakThreshold()');
-  thresholdSetButton.textContent = 'Reset';
-}
-
-const resetActiveStreakThreshold = () => {
-  activeStreakThreshold = 10;
-  thresholdSetButton.setAttribute('onclick', 'setActiveStreakThreshold()');
-  thresholdSetButton.textContent = 'Set';
-  activeStreakThresholdInput.value = 10;
-}
-
-activeStreakAccrualRateInput.addEventListener('change', function(e) { 
-  newActiveStreakAccrualRate = e.target.value; 
+newActiveStreakAccrualRate.input.addEventListener("change", (e) => {
+  newActiveStreakAccrualRate.value = e.target.value;
 });
-
-const setActiveStreakAccrualRate = () => {
-  activeStreakAccrualRate = newActiveStreakAccrualRate;
-  streakRateSetButton.setAttribute('onclick', 'resetActiveStreakAccrualRate()');
-  streakRateSetButton.textContent = 'Reset';
-}
-
-const resetActiveStreakAccrualRate = () => {
-  activeStreakAccrualRate = 20;
-  streakRateSetButton.setAttribute('onclick', 'setActiveStreakAccrualRate()');
-  streakRateSetButton.textContent = 'Set';
-  activeStreakAccrualRateInput.value = 20;
-}
