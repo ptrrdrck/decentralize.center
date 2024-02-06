@@ -21,7 +21,8 @@ const newVoteAccrualRate = {
   button: document.getElementById("rate-set-button"),
   setRate: function () {
     currentRound.voteAccrualRate = this.value;
-    players.totalPlayerVotes = (players + 1) * currentRound.voteAccrualRate;
+    players.totalPlayerVotes =
+      (players.count + 1) * currentRound.voteAccrualRate;
     players.quotaVotes = players.totalPlayerVotes * players.quota;
     newVoteAccrualRate.button.setAttribute(
       "onclick",
