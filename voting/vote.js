@@ -1,3 +1,5 @@
+/* © 2023 Peter Rodrick <pete@lftlc.xyz> */
+
 const currentRound = {
   number: 1,
   voteValueA: 0,
@@ -29,40 +31,38 @@ const currentRound = {
   myAbstainVoteRate: "",
 };
 
-const voteValueA = document.getElementById("vote-value-a");
-const voteValueB = document.getElementById("vote-value-b");
+const getElement = (id) => document.getElementById(id);
 
-const myATallyDisplay = document.getElementById("vote-tally-a");
-const myATallyWeightDisplay = document.getElementById("total-a-votes");
-const myBTallyDisplay = document.getElementById("vote-tally-b");
-const myBTallyWeightDisplay = document.getElementById("total-b-votes");
-const myAbstainTallyDisplay = document.getElementById("abstain-tally");
-const myAVoteRateDisplay = document.getElementById("a-vote-rate");
-const myBVoteRateDisplay = document.getElementById("b-vote-rate");
-const myAbstainVoteRateDisplay = document.getElementById("abstain-vote-rate");
-const roundNumberDisplay = document.getElementById("round-number");
-const totalVotesAccruedDisplay = document.getElementById("votes-accrued");
-const totalVotesUsedDisplay = document.getElementById("total-votes-used");
-const votesAvailableDisplay = document.getElementById("votes-available");
-const roundWeightDisplay = document.getElementById("round-weight");
-const roundsMissedDisplay = document.getElementById("rounds-missed");
-const roundsActiveDisplay = document.getElementById("rounds-active");
-const activeStreakDisplay = document.getElementById("active-streak");
-const myParticipationRateDisplay =
-  document.getElementById("participation-rate");
-
-const voteButtonA = document.getElementById("vote-button-a");
-const voteButtonB = document.getElementById("vote-button-b");
-const abstainButton = document.getElementById("abstain");
-const nextRoundButton = document.getElementById("next-round");
-const addButtonA = document.getElementById("add-a");
-const addButtonB = document.getElementById("add-b");
-const subtractButtonA = document.getElementById("subtract-a");
-const subtractButtonB = document.getElementById("subtract-b");
-const maxButtonA = document.getElementById("max-a");
-const maxButtonB = document.getElementById("max-b");
-
-const historyArea = document.getElementById("history-area");
+const voteValueA = getElement("vote-value-a");
+const voteValueB = getElement("vote-value-b");
+const myATallyDisplay = getElement("vote-tally-a");
+const myATallyWeightDisplay = getElement("total-a-votes");
+const myBTallyDisplay = getElement("vote-tally-b");
+const myBTallyWeightDisplay = getElement("total-b-votes");
+const myAbstainTallyDisplay = getElement("abstain-tally");
+const myAVoteRateDisplay = getElement("a-vote-rate");
+const myBVoteRateDisplay = getElement("b-vote-rate");
+const myAbstainVoteRateDisplay = getElement("abstain-vote-rate");
+const roundNumberDisplay = getElement("round-number");
+const totalVotesAccruedDisplay = getElement("votes-accrued");
+const totalVotesUsedDisplay = getElement("total-votes-used");
+const votesAvailableDisplay = getElement("votes-available");
+const roundWeightDisplay = getElement("round-weight");
+const roundsMissedDisplay = getElement("rounds-missed");
+const roundsActiveDisplay = getElement("rounds-active");
+const activeStreakDisplay = getElement("active-streak");
+const myParticipationRateDisplay = getElement("participation-rate");
+const voteButtonA = getElement("vote-button-a");
+const voteButtonB = getElement("vote-button-b");
+const abstainButton = getElement("abstain");
+const nextRoundButton = getElement("next-round");
+const addButtonA = getElement("add-a");
+const addButtonB = getElement("add-b");
+const subtractButtonA = getElement("subtract-a");
+const subtractButtonB = getElement("subtract-b");
+const maxButtonA = getElement("max-a");
+const maxButtonB = getElement("max-b");
+const historyArea = getElement("history-area");
 
 const updateStats = () => {
   currentRound.roundsActive++;
@@ -142,7 +142,7 @@ const updatePlayerRates = () => {
 };
 
 const updateHistory = () => {
-  let history = document.querySelector("#history-area");
+  let history = getElement("history-area");
   let stats = [
     `Round ${currentRound.number}`,
     `${currentRound.status}`,
@@ -190,16 +190,14 @@ const players = {
   roundResult: "",
 };
 
-const percentVotedDisplay = document.getElementById("percent-voted");
-const playersVotedADisplay = document.getElementById("players-voted-a");
-const playersAVotesDisplay = document.getElementById("players-total-a-votes");
-const playersVotedBDisplay = document.getElementById("players-voted-b");
-const playersBVotesDisplay = document.getElementById("players-total-b-votes");
-const playersAbstainedDisplay = document.getElementById(
-  "players-total-abstained"
-);
-const playersMissedDisplay = document.getElementById("players-total-missed");
-const roundResultDisplay = document.getElementById("round-result");
+const percentVotedDisplay = getElement("percent-voted");
+const playersVotedADisplay = getElement("players-voted-a");
+const playersAVotesDisplay = getElement("players-total-a-votes");
+const playersVotedBDisplay = getElement("players-voted-b");
+const playersBVotesDisplay = getElement("players-total-b-votes");
+const playersAbstainedDisplay = getElement("players-total-abstained");
+const playersMissedDisplay = getElement("players-total-missed");
+const roundResultDisplay = getElement("round-result");
 
 roundResultDisplay.innerText = "Waiting for vote...";
 
